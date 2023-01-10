@@ -29,7 +29,7 @@
 - 子供服やおもちゃを売りたいと思った時
 
 ## 設計書
-###実装機能リストurl
+### 実装機能リストurl
 https://docs.google.com/spreadsheets/d/1jCb9eWGaeW1oXPgihjlyAzBq8SW_P_QNnadoNjAdEOQ/edit?usp=sharing
 
 ## 開発環境
