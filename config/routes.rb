@@ -41,6 +41,9 @@ devise_for :users,skip: [:passwords], controllers: {
    
    namespace :admin do
     root to:"homes#top"
+    resources :order_details,only:[:update]
+    resources :orders, only:[:show, :index, :update]
+    resources :users, only:[:index, :show, :edit, :update]
   end
 
 end
