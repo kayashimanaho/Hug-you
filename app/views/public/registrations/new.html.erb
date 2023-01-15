@@ -13,7 +13,16 @@
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@test" %>
   </div>
-
+  
+  <div class="field">
+    <%= f.label :郵便番号（ハイフンなし） %><br/>
+    <%= f.text_field :postal_code, placeholder:"0000000" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :住所 %><br/>
+    <%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町０−０",size: 50 %>
+    
   <div class="field">
     <%= f.label :パスワード（６文字以上） %>
     <% if @minimum_password_length %>

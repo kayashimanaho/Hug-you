@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_051918) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "post_article", null: false
+    t.string "content", null: false
     t.string "public_flag", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -169,6 +169,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_051918) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
     t.string "nick_name"
     t.integer "age"
     t.string "from"

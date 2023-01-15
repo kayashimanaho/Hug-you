@@ -1,1 +1,29 @@
-<h1>管理者ユーザー一覧ページ</h1>
+<div class ="container">
+  <h4><span><管理者></h4></h3>ユーザー一覧</span></h3>
+  
+ 
+    <table border="0" cellpadding="11" cellspacing="0" width="95%">
+    <thead>
+      <tr>
+        <th width="20%">氏名</th>
+        <th>メールアドレス</th>
+        <th width="20%">住所</th>
+        <th width="20%">ステータス</th>
+     </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, admin_user_path(user.id) %></td>
+      <td><%= user.email %></td>
+      <td><%= user.postal_code %><%= user.address %></td>
+      <td><%#= order.status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+ </div>
+</div>
+ <div class="d-flex align-items-center justify-content-center">
+    <div><%#= paginate @users %></div>
+  </div>
