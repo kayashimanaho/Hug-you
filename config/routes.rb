@@ -44,7 +44,9 @@ devise_for :users,skip: [:passwords], controllers: {
     root to:"homes#top"
     resources :order_details,only:[:update]
     resources :orders, only:[:show, :index, :update]
-    resources :users, only:[:index, :show, :edit, :update]
+    resources :users, only:[:show, :edit, :update]
+    resources :comments,only:[:index, :show, :edit, :update]
+    resources :keywrods,only:[:index, :show, :edit, :update]
   end
 
 end

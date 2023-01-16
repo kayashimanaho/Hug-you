@@ -35,13 +35,13 @@
             </li>
             <% elsif admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "コメント一覧", about_path, class: 'nav-link text-white' %>
+              <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to "キーワード一覧", about_path, class: 'nav-link text-white' %>
+              <%= link_to "キーワード一覧", admin_keywrods_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to "会員一覧", root_path, class: 'nav-link text-white' %>
+              <%= link_to "会員一覧", admin_root_path, class: 'nav-link text-white' %>
             </li>
             <li>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
