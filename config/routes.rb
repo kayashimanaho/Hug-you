@@ -37,8 +37,13 @@ devise_for :users,skip: [:passwords], controllers: {
           get 'complete'
         end
       end
+      resources :messages do
+      end
+        
+      end
+      
       resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-   end
+   
    
    namespace :admin do
     root to:"homes#top"
@@ -46,7 +51,7 @@ devise_for :users,skip: [:passwords], controllers: {
     resources :orders, only:[:show, :index, :update]
     resources :users, only:[:show, :edit, :update]
     resources :comments,only:[:index, :show, :edit, :update]
-    resources :keywrods,only:[:index, :show, :edit, :update]
+    resources :keywords,only:[:index, :show, :edit, :update]
   end
 
 end

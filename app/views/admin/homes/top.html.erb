@@ -17,6 +17,7 @@
       <td><%= link_to user.name, admin_user_path(user.id) %></td>
       <td><%= user.email %></td>
       <td><%= user.postal_code %><%= user.address %></td>
+      <!--有効か退会か-->
       <td><%#= order.status_i18n %></td>
     </tr>
     <% end %>

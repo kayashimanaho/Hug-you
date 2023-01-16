@@ -1,0 +1,17 @@
+<h5><%= @user.name %>さんのマイページ</h5>
+<div>
+  <%= image_tag @user.get_profile_image(100,100) %>
+ <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
+        <span><i class="fas fa-user-cog"></i></span>
+      <% end %><br>
+  
+  <%= link_to "メッセージ一覧", messages_path,class: "btn btn-info" %>
+  
+  <ul>
+    <li>ニックネーム</li>
+    <li>出身地</li>
+    <li>年齢</li>
+    <li>自己紹介文</li>
+  </ul>
+  
+</div>

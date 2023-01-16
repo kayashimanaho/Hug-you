@@ -1,8 +1,31 @@
-# frozen_string_literal: true
+#frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+   before_action :configure_permitted_parameters
   # before_action :configure_account_update_params, only: [:update]
+  
+  protected
+
+  # If you have extra params to permit, append them to the sanitizer.
+   def configure_permitted_parameters
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :reset_password_token, :reset_password_sent_at, :remember_created_at,:name, :postal_code, :address, :nick_name, :age, :from, :profile_image, :introduction, :is_deleted])
+   end
+
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  # end
+
+  # The path used after sign up.
+   def after_sign_up_path_for(resource)
+     my_page_users_path(resource)
+   end
+   
+  #def after_update_path_for(resource)
+    # 自分で設定した「マイページ」へのパス
+    #my_page_customersh(current_customer)
+  #end
+
 
   # GET /resource/sign_up
   # def new

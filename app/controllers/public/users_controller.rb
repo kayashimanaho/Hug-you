@@ -1,10 +1,29 @@
 class Public::UsersController < ApplicationController
-  def index
+  def my_page
+    @user = current_user
     @users = User.all
+      
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
+  end
+  
+  def edit
+    @user = current_user
+  end
+  
+  def update
+    @user = current_user
+    @user.update(user_params)
+     redirect_to my_page_user_path(@user.id)
+  end
+  
+  def withdraw
+    @user = current_user
+    @user.update(is_deleted: true)
+    sign_out current_user
+    redirect_to root_path
   end
   
    private
