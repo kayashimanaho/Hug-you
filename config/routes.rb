@@ -16,7 +16,7 @@ devise_for :users,skip: [:passwords], controllers: {
       root to:"homes#top"
       get "/about" => "homes#about", as: "about"
       # resources :items, only:[:index, :show]
-      resources :users do
+      resources :users, only: [:index, :create] do
         collection do
           get 'my_page'
           get 'information/edit', action: :edit
