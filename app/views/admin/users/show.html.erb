@@ -7,7 +7,7 @@
     <tr><th>郵便番号</th><td><%= @user.postal_code %></td></tr>
     <tr><th>住所</th><td><%= @user.address %></td></tr>
     <tr><th>出身地</th><td><%= @user.from %></td></tr>
-    <tr><th>年齢</th><td><%= @user.age %></td></tr>
+    <tr><th>年齢</th><td><%= @user.age %>歳</td></tr>
     <tr><th>自己紹介文</th><td><%= @user.introduction %></td></tr>
     <tr><th>メールアドレス</th><td><%= @user.email %></td></tr>
     <tr><th>会員ステータス</th><td><% if @user.is_deleted %>
@@ -17,3 +17,4 @@
       <% end %></td></tr>
   </table>
 
+<%= link_to "編集する",  edit_admin_user_path, class:' btn btn-info' %>

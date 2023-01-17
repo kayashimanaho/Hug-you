@@ -1,6 +1,6 @@
 <div class ="container">
 <h5><%= @user.name %>さんのマイページ</h5>
-  <%= image_tag @user.get_profile_image(100,100) %>
+  <%= image_tag @user.get_profile_image(100,100) %><br>
  <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
         <span><i class="fas fa-user-cog"></i></span>
       <% end %><br>
@@ -17,12 +17,13 @@
     </div>
     <div>
       <p>年齢</p>
-      <%= @user.age %>
+      <%= @user.age %>歳
     </div>
     <div>
       <p>自己紹介文</p>
       <%= @user.introduction %>
     </div>
   
+  <div>投稿履歴</div>
   
 </div>

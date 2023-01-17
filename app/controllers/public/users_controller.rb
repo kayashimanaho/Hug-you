@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-     redirect_to my_page_user_path(@user.id)
+     redirect_to my_page_users_path(@user.id)
   end
   
   def withdraw

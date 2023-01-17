@@ -13,30 +13,16 @@
       <tr><th>住所</th><td><%= f.text_field :address, autofocus: true, id:"address",size: 50 %></td></tr>
       <tr><th>出身地</th><td><%= f.text_field :from, autofocus: true, id:"inputFrom" %></td></tr>
       <tr><th>年齢</th><td><%= f.text_field :age, autofocus: true, id:"inputAge" %></td></tr>
-      <tr><th>自己紹介文</th><td><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %></td></tr>
+      <tr><th>自己紹介文</th><td><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %></td></tr>
       <tr><th>メールアドレス</th><td><%= f.text_field :email, autofocus: true, id:"inputEmail" %></td></tr>
       
     </table>
      <div class="d-flex align-items-center justify-content-center">
       <%= f.submit "変更を保存", class: "btn btn-success" %>
+      
+      <%= link_to "退会する", withdraw_users_path,method: :patch, class: "btn btn-danger","data-confirm" => "本当に退会しますか?" %>
      </div>
   <% end %>
-  　<div>
-      <p>ニックネーム</p>
-      <%= @user.nick_name %>
-    </div>
-    <div>
-      <p>出身地</p>
-      <%= @user.from %>
-    </div>
-    <div>
-      <p>年齢</p>
-      <%= @user.age %>
-    </div>
-    <div>
-      <p>自己紹介文</p>
-      <%= @user.introduction %>
-    </div>
   
   
 </div>
