@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_051918) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "content", null: false
-    t.string "public_flag", null: false
+    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

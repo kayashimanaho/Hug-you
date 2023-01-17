@@ -13,9 +13,12 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      # redirect_back(fallback_location: root_path)
+      flash[:notice] = "投稿が成功しました."
+       redirect_to posts_path
     else
-      # redirect_back(fallback_location: root_path)
+      @post_all = Post.all
+      @user = current_user
+      render :index
     end
   end
 

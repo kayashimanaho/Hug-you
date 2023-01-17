@@ -1,1 +1,13 @@
-<h1>コミュニティルーム</h1>
+<%= flash[:notice] %>
+<h2>みんなで子育てについて語り合おう</h2>
+<input type="search" name="search" placeholder="キーワード検索">
+  <input type="submit" name="submit" value="検索">
+  
+  <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+<h4></h4>
+  <%= f.text_area :content %>
+  
+  
+  
+  <%= f.submit '投稿' %>
+<% end %>
