@@ -25,8 +25,8 @@ devise_for :users,skip: [:passwords], controllers: {
           patch 'withdraw' 
           end
       end
-      resources :posts, only: [:index, :show, :create] do
-        resources :comments, only: [ :show, :create]
+      resources :posts, only: [:index, :show, :create, :destroy] do
+        resources :comments, only: [ :show, :create, :destroy]
         resource :favorites, only: [:create, :destroy]
       end
       resources :cart_items, only:[:index, :update, :destroy, :create] do

@@ -14,7 +14,6 @@
   <!--３回で折り返す-->
   <div class="col-sm-4">
     <div class="card">
-    <%= link_to post_path(posts.id) do%>
       <div class="card-body">
         <h5 class="card-title">
           <span>
@@ -28,8 +27,8 @@
         </h5>
           <p class="card-text"><%= posts.content %></p>
           <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+            <%= link_to "コメントする", post_path(posts.id),class: "btn btn-info" %>
       </div>
-    <% end %>
     </div>
   </div>
   <% end %>

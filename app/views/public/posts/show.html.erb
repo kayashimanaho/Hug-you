@@ -1,28 +1,49 @@
 <h1>投稿の詳細</h1>
+<div class="col-sm-5">
+  <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <span>
+            <% if @post.user.profile_image.attached? %>
+              <%= image_tag @post.user.profile_image, size: "50x50" %>
+            <% else %>
+              <%= image_tag "no_image.jpeg", size: "50x50" %>
+            <% end %>
+            <%= @post.user.nick_name %>
+          </span>
+        </h5>
+          <p class="card-text"><%= @post.content %></p>
+            <% if @post.favorited_by?(current_user) %>
+          <p>
+              <%= link_to post_favorites_path(@post), method: :delete do %>
+              ♥<%= @post.favorites.count %> いいね
+              <% end %>
+          </p>
+            <% else %>
+          <p>
+              <%= link_to post_favorites_path(@post), method: :post do %>
+              ♡<%= @post.favorites.count %> いいね
+              <% end %>
+          </p>
+            <% end %>
+      </div>
+        <p>コメント件数：<%= @post.user.comments.count %></p>
+        <!--ルーティングが違うと-->
+        <%# if @post.user == current_user %>
+    <%#= link_to "削除", post_path(@post), method: :delete %>
+  <!--% end %>-->
+    </div>
+    <div>
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
+  </div>
 <div>
-  <p>コメント件数：<%= @post.user.comments.count %></p>
   <% @post.user.comments.each do |comment| %>
     <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-   <!--% if @posts.favorited_by?(current_user) %>-->
-    <p>
-      <%#= link_to post_favorites_path(@posts), method: :delete do %>
-        ♥<%#= @posts.favorites.count %> いいね
-      <!--% end %>-->
-    </p>
-    <!--% else %>-->
-    <p>
-      <%#= link_to post_favorites_path(@posts), method: :post do %>
-        ♡<%#= @posts.favorites.count %> いいね
-      <!--% end %>-->
-    </p>
+      <%= comment.user.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
   <% end %>
 </div>

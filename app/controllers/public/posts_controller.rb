@@ -24,6 +24,13 @@ class Public::PostsController < ApplicationController
       render :index
     end
   end
+  
+  def destroy
+    @post = current_user
+    @post.destroy
+    redirect_to post_path
+  end
+
 
   private
   def post_params
