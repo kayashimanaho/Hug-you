@@ -6,8 +6,31 @@
   <%= form_with model: @post, url: posts_path, method: :post do |f| %>
 <h4></h4>
   <%= f.text_area :content %>
-  
-  
-  
   <%= f.submit '投稿' %>
 <% end %>
+
+<div class="row">
+  <% @posts.each do |posts| %>
+  <!--３回で折り返す-->
+  <div class="col-sm-4">
+    <div class="card">
+    <%= link_to post_path(posts.id) do%>
+      <div class="card-body">
+        <h5 class="card-title">
+          <span>
+            <% if posts.user.profile_image.attached? %>
+              <%= image_tag posts.user.profile_image, size: "50x50" %>
+            <% else %>
+              <%= image_tag "no_image.jpeg", size: "50x50" %>
+            <% end %>
+            <%= posts.user.nick_name %>
+          </span>
+        </h5>
+          <p class="card-text"><%= posts.content %></p>
+          <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

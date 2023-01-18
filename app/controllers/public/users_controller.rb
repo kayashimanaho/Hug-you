@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   def my_page
     @user = current_user
     @users = User.all
-    
+    @comments = Comment.all
   end
 
   def show

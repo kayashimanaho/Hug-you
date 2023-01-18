@@ -25,7 +25,10 @@ devise_for :users,skip: [:passwords], controllers: {
           patch 'withdraw' 
           end
       end
-      resources :posts, only: [:index, :show, :create]
+      resources :posts, only: [:index, :show, :create] do
+        resources :comments, only: [ :show, :create]
+        resource :favorites, only: [:create, :destroy]
+      end
       resources :cart_items, only:[:index, :update, :destroy, :create] do
         collection do
           delete 'destroy_all',action: :destroy_all
