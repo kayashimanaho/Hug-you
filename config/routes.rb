@@ -26,7 +26,7 @@ devise_for :users,skip: [:passwords], controllers: {
       end
     end
         # メッセージ機能
-        resources :messages, only: [:create]
+        resources :messages, only: [:create, :index]
         resources :rooms, only: [:create, :index, :show]
       
       resources :posts, only: [:index, :show, :create, :destroy] do

@@ -1,3 +1,22 @@
 // Place all the styles related to the public/rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.chat-form-group{
+  padding-top: 20px;
+  background-color: white;
+}
+
+div#mycomment{
+    float: right;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    background: #fff;
+    dispay: inline-block;
+    position: relative;
+    border: 1px solid #000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}

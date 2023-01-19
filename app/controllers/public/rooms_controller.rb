@@ -19,10 +19,10 @@ class Public::RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
-    @messages = @room.messages.all
-    @message = Message.new
-    @entries = @room.entries
+    @room = Room.find(params[:id]) #一つのroomを表示
+    @messages = @room.messages.all #過去のやり取りを全て表示
+    @message = Message.new #新しくメッセージを作る
+    @entries = @room.entries #ビューで相手の名前を
     @another_entry = @entries.where.not(user_id: current_user.id).first
   end
 end

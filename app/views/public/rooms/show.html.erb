@@ -1,0 +1,42 @@
+<div class="title">
+  <h4>
+    <%= ("#{@another_entry.user.nick_name}さんとのメッセージ") %>
+  </h4>
+</div>
+
+  <% @messages.each do |m| %>
+    <% if m.user_id == current_user.id %>
+      <div id ="mycomment">
+        <p>
+          <%= image_tag m.user.get_profile_image(100,100) %>
+          <%= m.user.nick_name %>: 
+          <%= m.content %>
+        </p>
+      </div>
+      <% else %>
+      <div class ="fikidasi">
+        <div class ="faceicon">
+          <%#= image_tag m.user.email %>
+        </div>
+      </div>
+      <%= image_tag m.user.get_profile_image(100,100) %>
+      <%= m.user.nick_name %>
+      <div class ="chatting">
+        <div class ="says">
+          <p>
+            <%= m.content %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  
+  <div class ="chat-form-box">
+    <%= form_for @message do |f| %>
+      <div class ="chat-form-group">
+        <%= f.text_field :content %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <%= f.submit "送信する" %>
+      </div>
+    <% end %>
+  </div>
