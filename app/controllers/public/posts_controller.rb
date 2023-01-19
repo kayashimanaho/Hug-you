@@ -4,12 +4,15 @@ class Public::PostsController < ApplicationController
     # @posts = Post.find(params[:id])
     @posts = Post.all
     @post = Post.new
+    #@posts = User.find(params[:id]).posts.all
+    # いろんなユーザの詳細ページに行きたい
     @user = current_user
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    # @user = User.find(params[:id])
   end
 
   def create

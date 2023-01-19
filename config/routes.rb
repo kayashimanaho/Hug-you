@@ -16,15 +16,19 @@ devise_for :users,skip: [:passwords], controllers: {
       root to:"homes#top"
       get "/about" => "homes#about", as: "about"
       # resources :items, only:[:index, :show]
-      resources :users, only: [:index, :create] do
+      resources :users, only: [:index, :create, :show] do
         collection do
           get 'my_page'
           get 'information/edit', action: :edit
           patch 'information',action: :update
           get 'unsubscribe' 
           patch 'withdraw' 
-          end
       end
+    end
+        # メッセージ機能
+        resources :messages, only: [:create]
+        resources :rooms, only: [:create, :index, :show]
+      
       resources :posts, only: [:index, :show, :create, :destroy] do
         resources :comments, only: [ :show, :create, :destroy]
         resource :favorites, only: [:create, :destroy]
@@ -39,8 +43,6 @@ devise_for :users,skip: [:passwords], controllers: {
           post 'comfirm'
           get 'complete'
         end
-      end
-      resources :messages do
       end
         
       end

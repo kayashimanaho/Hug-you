@@ -6,11 +6,28 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    # ログインしてるユーザーとメッセージ相手のユーザー情報をEntryテーブルから検索
+    @current_entry = Entry.where(user_id: current_user.id)
+    @another_entry = Entry.where(user_id: @user.id)
+    unless @user.id == current_user.id　#ログインしていないユーザー
+      @current_entry.each do |current|　#テーブルが存在するか調べる
+        @another_entry.each do |another|
+          if current.room_id == another.room_id
+            @is_room = true
+            @room_id = current.room_id
+          end
+        end
+      end
+      unless @is_room #ルームがない時は作る
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
   
   def edit
-    @user = current_user
+   @user = User.find(params[:id])
   end
   
   def update

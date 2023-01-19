@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   has_one_attached :profile_image
   
   def get_profile_image(width, height)
