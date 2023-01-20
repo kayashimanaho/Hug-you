@@ -2,8 +2,10 @@ class Public::PostsController < ApplicationController
    before_action :authenticate_user!, only: [:show, :create]
   def index
     # @posts = Post.find(params[:id])
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(6)
     @post = Post.new
+    #いいねランキング
+    @posts_favorites = Post.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
     #@posts = User.find(params[:id]).posts.all
     # いろんなユーザの詳細ページに行きたい
     @user = current_user
@@ -32,6 +34,7 @@ class Public::PostsController < ApplicationController
     @post = current_user
     @post.destroy
     redirect_to post_path
+   
   end
 
 

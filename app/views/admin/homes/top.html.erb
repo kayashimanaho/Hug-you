@@ -18,7 +18,11 @@
       <td><%= user.email %></td>
       <td><%= user.postal_code %><%= user.address %></td>
       <!--有効か退会か-->
-      <td><%#= user.status_i18n %></td>
+      <td><% if user.is_deleted %>
+          <span style="color:grey;">退会</span>
+       <% else %>
+          <span style="color:limegreen;">有効</span>
+      <% end %></td>
     </tr>
     <% end %>
   </tbody>

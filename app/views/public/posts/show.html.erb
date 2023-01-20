@@ -41,13 +41,13 @@
     </div>
   </div>
 <div>
-  <% @post.user.comments.each do |comment| %>
+  <% @post.each do |comment| %>
     <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
       <%= comment.user.name %>
       <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
       <!--削除を押すとエラー-->
-      <%# if @post.user == current_user %>
-        <%#= link_to "削除", post_path(@post.user.id), method: :delete %>
-      <!--% end %>--
+      <% if comment.user == current_user %>
+        <%= link_to "削除", post_comments_path(comment.user.id), method: :delete %>
+      <% end %>
   <% end %>
 </div>

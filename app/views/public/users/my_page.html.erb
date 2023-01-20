@@ -5,9 +5,10 @@
         <span><i class="fas fa-user-cog"></i></span>
       <% end %><br>
   
+  
   <%= link_to "ルーム一覧", rooms_path,class: "btn btn-info" %>
   
-  　<div>
+  <div>
       <p>ニックネーム</p>
       <%= @user.nick_name %>
     </div>
@@ -25,7 +26,10 @@
     </div>
   
   <div>今までの投稿履歴</div>
-  <!--each文-->
-  <p><%#= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
-  
+  <!--each文なんで構文エラーになるの-->
+  <div>
+  <!--% @user each do |user| %>-->
+    <%#= user.posts.content %>
+  <!--% end %>-->
+  </div>
 </div>

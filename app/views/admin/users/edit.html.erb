@@ -1,24 +1,26 @@
- <h3><span style="background-color: pink;"><%= @user.name %>さんの会員情報編集</span></h3>
-   <%= form_with model: @user, url: admin_user_path do |f| %>
-    <table border="0" cellpadding="7" cellspacing="0" width="60%">
-      <tr><th>会員ID</th><td><%= @user.id %></td></tr>
-      <tr><th>氏名</th><td><%= f.text_field :name, autofocus: true, id:"inputName" %></td></tr>
-      <tr><th>ニックネーム</th><td><%= f.text_field :nick_name, autofocus: true, id:"inputNick_Name" %></td></tr>
-      <tr><th>郵便番号</th><td><%= f.text_field :postal_code, autofocus: true, id:"inputPostal_code" %></td></tr>
-      <tr><th>住所</th><td><%= f.text_field :address, autofocus: true, id:"address",size: 50 %></td></tr>
-      <tr><th>出身地</th><td><%= f.text_field :from, autofocus: true, id:"inputFrom" %></td></tr>
-      <tr><th>年齢</th><td><%= f.text_field :age, autofocus: true, id:"inputAge" %></td></tr>
-      <tr><th>自己紹介文</th><td><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %></td></tr>
-      <tr><th>メールアドレス</th><td><%= f.text_field :email, autofocus: true, id:"inputEmail" %></td></tr>
-      <tr><th>会員ステータス</th><td>
-        <%= f.radio_button :is_deleted, '1', autofocus: true, id:"inputIs_deleted" %>
-        <%= f.label :is_deleted, '退会', value: 1 %>
-      
-        <%= f.radio_button :is_deleted, '0', autofocus: true, id:"inputIs_deleted" %>
-        <%= f.label :is_deleted, '有効', value: 0 %>
-      </td></tr>
-    </table>
-     <div class="d-flex align-items-center justify-content-center">
-      <%= f.submit "変更を保存", class: "btn btn-info" %>
-     </div>
-  <% end %>
+ <div class ="container">
+   <h3><span style="background-color: pink;"><%= @user.name %>さんの会員情報編集</span></h3>
+     <%= form_with model: @user, url: admin_user_path do |f| %>
+      <table border="0" cellpadding="7" cellspacing="0" width="60%">
+        <tr><th>会員ID</th><td><%= @user.id %></td></tr>
+        <tr><th>氏名</th><td><%= f.text_field :name, autofocus: true, id:"inputName" %></td></tr>
+        <tr><th>ニックネーム</th><td><%= f.text_field :nick_name, autofocus: true, id:"inputNick_Name" %></td></tr>
+        <tr><th>郵便番号</th><td><%= f.text_field :postal_code, autofocus: true, id:"inputPostal_code" %></td></tr>
+        <tr><th>住所</th><td><%= f.text_field :address, autofocus: true, id:"address",size: 50 %></td></tr>
+        <tr><th>出身地</th><td><%= f.text_field :from, autofocus: true, id:"inputFrom" %></td></tr>
+        <tr><th>年齢</th><td><%= f.text_field :age, autofocus: true, id:"inputAge" %></td></tr>
+        <tr><th>自己紹介文</th><td><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %></td></tr>
+        <tr><th>メールアドレス</th><td><%= f.text_field :email, autofocus: true, id:"inputEmail" %></td></tr>
+        <tr><th>会員ステータス</th><td>
+          <%= f.radio_button :is_deleted, '1', autofocus: true, id:"inputIs_deleted" %>
+          <%= f.label :is_deleted, '退会', value: 1 %>
+        
+          <%= f.radio_button :is_deleted, '0', autofocus: true, id:"inputIs_deleted" %>
+          <%= f.label :is_deleted, '有効', value: 0 %>
+        </td></tr>
+      </table>
+       <div class="d-flex align-items-center justify-content-center">
+        <%= f.submit "変更を保存", class: "btn btn-info" %>
+       </div>
+      <% end %>
+  </div>

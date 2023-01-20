@@ -30,9 +30,10 @@ devise_for :users,skip: [:passwords], controllers: {
         resources :rooms, only: [:create, :index, :show]
       
       resources :posts, only: [:index, :show, :create, :destroy] do
-        resources :comments, only: [ :show, :create, :destroy]
-        resource :favorites, only: [:create, :destroy]
+        resource :comments, only: [ :show, :create, :destroy]
+        resource :favorites, only: [:create]
       end
+      resources :comments, only: [:destroy]
       resources :cart_items, only:[:index, :update, :destroy, :create] do
         collection do
           delete 'destroy_all',action: :destroy_all

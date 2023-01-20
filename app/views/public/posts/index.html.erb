@@ -1,15 +1,32 @@
-<div class="cover-user-index">
-<%= flash[:notice] %>
-<h2>みんなで子育てについて語り合おう</h2>
-<input type="search" name="search" placeholder="キーワード検索">
-  <input type="submit" name="submit" value="検索">
+<div class ="container">
+  <div class="cover-user-index">
+  <%= flash[:notice] %>
+  <div class ="row">
+    <div class ="col-9">
+      <h2>みんなで子育てについて語り合おう</h2>
+        <input type="search" name="search" placeholder="キーワード検索">
+        <input type="submit" name="submit" value="検索">
   
-  <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-<h4></h4>
-  <%= f.text_area :content %>
-  <%= f.submit '投稿' %>
-<% end %>
-
+        <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+        <h4></h4>
+        <%= f.text_area :content %>
+        <%= f.submit '投稿' %>
+        <% end %>
+    </div>
+    <div class ="col-3">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">いいねランキング♡</div>
+          <div class="card-body text-dark">
+            <h5 class="card-title">いいね数</h5>
+            <p class="card-text">
+              <% @posts_favorites.each do |f| %>
+                <%= f.user.name %>
+              <% end %>
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="row">
   <% @posts.each do |posts| %>
   <!--３回で折り返す-->
@@ -36,5 +53,9 @@
     </div>
   </div>
   <% end %>
+  <div class="d-flex align-items-center justify-content-center">
+  <%= paginate @posts %>
+  </div>
+</div>
 </div>
 </div>
