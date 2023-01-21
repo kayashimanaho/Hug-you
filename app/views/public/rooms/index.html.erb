@@ -1,23 +1,27 @@
-<% @another_entries.each do |entry| %>
-  <%= link_to room_path(entry.room) do %>
-    <div class ="card">
-      <div class ="card-body">
-        <div class ="d-flex">
-          <div class ="chat-avatar">
-            <div class ="object">
-              <%= link_to user_path(entry.user) do %>
-             
-              <% end %>
-            </div>
-            <div class ="chat-user-name">
-              <%= entry.user.nick_name %>
-            </div>
-            <div class ="chat-text">
-              <%= Message.find_by(id: entry.room.message_ids.last)&.content %>
+<div class ="container">
+  <h4>メッセージ一覧</h4>
+    <% @another_entries.each do |entry| %>
+      <%= link_to room_path(entry.room) do %>
+      <div class ="card">
+        <div class ="card-body">
+          <div>
+            <div class ="d-flex">
+              <div class ="chat-avatar">
+                <object>
+                  <%= link_to user_path(entry.user) do %>
+                  <% end %>
+                </object>
+                <div class ="chat-user-name">
+                  <%= entry.user.nick_name %>
+                </div>
+                <div class ="chat-text">
+                  <%= Message.find_by(id: entry.room.message_ids.last)&.content %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <% end %>
     <% end %>
-    <% end %>
+</div>

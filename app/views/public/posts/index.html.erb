@@ -13,49 +13,54 @@
         <%= f.submit '投稿' %>
         <% end %>
     </div>
+    <!--いいねランキング-->
     <div class ="col-3">
       <div class="card border-dark mb-3" style="max-width: 18rem;">
         <div class="card-header">いいねランキング♡</div>
           <div class="card-body text-dark">
             <h5 class="card-title">いいね数</h5>
             <p class="card-text">
-              <% @posts_favorites.each do |f| %>
-                <%= f.user.name %>
+              <% @posts_favorites.each.with_index(1) do |post, i| %>
+              <p>
+                第<%= i %>位
+                <%= post.user.nick_name %>
+                ♡<%=post.favorites.size%>
+              </p>
               <% end %>
             </p>
         </div>
       </div>
     </div>
   </div>
-<div class="row">
-  <% @posts.each do |posts| %>
-  <!--３回で折り返す-->
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-          <!--押したユーザーの投稿詳細（ここでコメントもできる）に行きたい-->
-          <%= link_to user_path(@user.id) do %>
-          <span>
-            <% if posts.user.profile_image.attached? %>
-              <%= image_tag posts.user.profile_image, size: "50x50" %>
-            <% else %>
-              <%= image_tag "no_image.jpeg", size: "50x50" %>
-            <% end %>
-            <%= posts.user.nick_name %>
-          </span>
-          <% end %>
-        </h5>
-          <p class="card-text"><%= posts.content %></p>
-          <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
-            <%= link_to "コメントする", post_path(posts.id),class: "btn btn-info" %>
+  <div class="row">
+    <% @posts.each do |posts| %>
+    <!--３回で折り返す-->
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <!--押したユーザーの投稿詳細に行きたいエラー-->
+            <%#= link_to user_path(@users) do %>
+            <span>
+              <% if posts.user.profile_image.attached? %>
+                <%= image_tag posts.user.profile_image, size: "50x50" %>
+              <% else %>
+                <%= image_tag "no_image.jpeg", size: "50x50" %>
+              <% end %>
+              <%= posts.user.nick_name %>
+            </span>
+            <!--% end %>-->
+          </h5>
+            <p class="card-text"><%= posts.content %></p>
+            <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+              <%= link_to "コメントする", post_path(posts.id),class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+      <div class="d-flex align-items-center justify-content-center">
+        <%= paginate @posts %>
       </div>
     </div>
   </div>
-  <% end %>
-  <div class="d-flex align-items-center justify-content-center">
-  <%= paginate @posts %>
-  </div>
-</div>
-</div>
 </div>

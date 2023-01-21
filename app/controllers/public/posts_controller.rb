@@ -5,10 +5,11 @@ class Public::PostsController < ApplicationController
     @posts = Post.page(params[:page]).per(6)
     @post = Post.new
     #いいねランキング
-    @posts_favorites = Post.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
+    @posts_favorites = Post.group(:user_id).includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
+   
     #@posts = User.find(params[:id]).posts.all
-    # いろんなユーザの詳細ページに行きたい
-    @user = current_user
+    # いろんなユーザの詳細ページに行きたいエラーになる
+    # @users = User.where.not(id: current_user.id) 
   end
 
   def show

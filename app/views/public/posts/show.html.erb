@@ -45,7 +45,7 @@
     <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
       <%= comment.user.name %>
       <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
-      <!--削除を押すとエラーになる。。。-->
+      <!--自分のコメントしか削除できない-->
       <% if comment.user == current_user %>
         <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete %>
       <% end %>
