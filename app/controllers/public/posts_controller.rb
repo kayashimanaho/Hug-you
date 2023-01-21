@@ -15,6 +15,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     # @user = User.find(params[:id])
+    @comments = @post.comments #投稿ごとにコメントを分ける
   end
 
   def create

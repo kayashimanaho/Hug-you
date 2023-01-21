@@ -1,20 +1,25 @@
-<h1>管理者コメント一覧</h1>
-    <table border="0" cellpadding="11" cellspacing="0" width="95%">
-        <thead>
+<div class ="container">
+  <h1>管理者コメント一覧</h1>
+      <table border="0" cellpadding="11" cellspacing="0" width="95%">
+          <thead>
+            <tr>
+              <th width="10%">氏名</th>
+              <th>ニックネーム</th>
+              <th width="20%">コメント</th>
+              <th width="20%"></th>
+           </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |c| %>
           <tr>
-            <th width="20%">氏名</th>
-            <th>コメント</th>
-            <th width="20%"></th>
-            <th width="20%"></th>
-         </tr>
-      </thead>
-      <tbody>
-        <% @comments.each do |comment| %>
-        <tr>
-          <td><%= comment.user.name %></td>
-          <td><%= comment.user.nick_name %></td>
-          <td><%#= link_to user.name, admin_user_path(user.id) %></td>
-          <td><%= comment.comment %></td>
-        <% end %>
-      </tbody>
-      </table>
+            <td><%= c.user.name %></td>
+            <td><%= c.user.nick_name %></td>
+            <td><%= link_to c.comment,admin_comment_path(c.id) %></td>
+            <td></td>
+          <% end %>
+        </tbody>
+        </table>
+        <div class="d-flex align-items-center justify-content-center">
+    <%= paginate @comments %>
+    </div>
+  </div>

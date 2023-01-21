@@ -30,7 +30,7 @@
           </p>
             <% end %>
       </div>
-        <p>コメント件数：<%= @post.user.comments.count %></p>
+        <p>コメント件数：<%= @comments.count %></p>
         
     </div>
     <div>
@@ -41,13 +41,17 @@
     </div>
   </div>
 <div>
-  <% @post.each do |comment| %>
+  <% @comments.each do |comment| %>
     <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
       <%= comment.user.name %>
-      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
-      <!--削除を押すとエラー-->
+      <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
+      <!--削除を押すとエラーになる。。。-->
       <% if comment.user == current_user %>
-        <%= link_to "削除", post_comments_path(comment.user.id), method: :delete %>
+        <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete %>
+      <% end %>
+      <!--自分のコメントしか編集できない記述-->
+      <% if comment.user == current_user %>
+      <%= link_to "編集する", post_comments_path(comment.id) %>
       <% end %>
   <% end %>
 </div>

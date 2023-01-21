@@ -34,7 +34,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">
-          <!--押したユーザーに詳細に行きたい-->
+          <!--押したユーザーの投稿詳細（ここでコメントもできる）に行きたい-->
           <%= link_to user_path(@user.id) do %>
           <span>
             <% if posts.user.profile_image.attached? %>
