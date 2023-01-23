@@ -13,27 +13,14 @@
  *= require_tree .
  *= require_self
  */
-.cover-user-index {
-  height: 100%;
-  width: 100%;
-  background-image: url(/assets/背景.jpeg);
-  background-color: rgba(255, 255, 255, 0.4);
+
+body {
+  // ref: https://coliss.com/articles/build-websites/operation/css/css-responsive-full-background-image-by-sixrevisions.html
+  background: image-url("bg3.jpg") center center / cover no-repeat fixed;
+  background-color: rgba(255, 255, 255, 0.5) !important;
   background-blend-mode: lighten;
-  background-size: 100% 100%;
-}
-/*ページネーション自体のデザイン*/
-.pagination>li>a {          
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
 }
 
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {     
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
-}
-
-/*ホバー時のデザイン*/
-.pagination>li>a:hover {        
-  border-radius: 15px;    /*角を丸くする*/
+.header {
+   background: image-url("hd.jpg") 
 }

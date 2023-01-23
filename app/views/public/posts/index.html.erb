@@ -19,9 +19,9 @@
     <!--いいねランキング-->
     <div class ="col-3">
       <div class="card border-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">いいねランキング♡</div>
+        <div class="card-header">いいね!ランキング♡</div>
           <div class="card-body text-dark">
-            <h5 class="card-title">いいね数</h5>
+            <h6 class="card-title">みんなのいいね TOP10</h6>
             <p class="card-text">
               <% @posts_favorites.each.with_index(1) do |post, i| %>
               <p>
@@ -39,7 +39,7 @@
     <% @posts.each do |posts| %>
     <!--３回で折り返す-->
     <div class="col-sm-4">
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title">
             <!--押したユーザーの投稿詳細に行きたい-->
@@ -54,16 +54,17 @@
             </span>
             <% end %>
           </h5>
-            <p class="card-text"><%= posts.content %></p>
+            <p class="card-text"><%= posts.content.truncate(10) %></p>
             <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
-              <%= link_to "コメントする", post_path(posts.id),class: "btn btn-info" %>
+              <%= link_to "コメントする", post_path(posts.id),class: "btn btn-sm btn-outline-info" %>
         </div>
       </div>
     </div>
     <% end %>
-      <div class="d-flex align-items-center justify-content-center">
-        <%= paginate @posts %>
-      </div>
+      
     </div>
+  </div>
+  <div class="d-flex align-items-center justify-content-center mt-2">
+    <%= paginate @posts %>
   </div>
 </div>

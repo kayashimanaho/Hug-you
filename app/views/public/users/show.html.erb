@@ -1,5 +1,5 @@
   <div class ="container">
-    <h5><%= @user.nick_name %>さんの詳細ページ</h5>
+    <h6><%= @user.nick_name %>さんの詳細ページ</h6>
     <%= image_tag @user.get_profile_image(100,100) %><br>
     <!--自分の編集画面-->
     <% if @user == current_user %>
@@ -19,6 +19,8 @@
           <% end %>
          <%= f.submit "メッセージを送る", class: "btn btn-info" %>
         <% end %>
+      <% end %>
+    <% end %>
     　<div>
         <p>ニックネーム</p>
         <%= @user.nick_name %>
@@ -35,6 +37,4 @@
         <p>自己紹介文</p>
         <%= @user.introduction %>
       </div>
-      <% end %>
-    <% end %>
   </div>

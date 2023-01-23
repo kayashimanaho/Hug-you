@@ -2,7 +2,12 @@ class Public::PostsController < ApplicationController
    before_action :authenticate_user!, only: [:show, :create]
   def index
     #キーワード検索
-    @posts = post.paginate(page: params[:page], per_page: 5).search(params[:search])
+    # if params[:search]
+      @posts = Post.search(params[:search]).page(params[:page]).per(6)
+    # else
+    #   @posts = Post.page(params[:page]).per(5)
+    # end
+    
     @post = Post.new
     #いいねランキング
     @posts_favorites = Post.group(:user_id).includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
@@ -35,7 +40,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = current_user
     @post.destroy
-    redirect_to post_path
+    redirect_to posts_path
    
   end
 

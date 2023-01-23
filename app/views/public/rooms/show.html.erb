@@ -8,21 +8,21 @@
     <% @messages.each do |m| %>
       <% if m.user_id == current_user.id %>
       <div class ="row">
+          <div class ="col-6"></div>
         <div class ="col-6">
           <div id ="mycomment">
             <p>
               <%= image_tag m.user.get_profile_image(100,100) %>
               <%= m.user.nick_name %>: <br>
               <%= m.content %><br>
-              <%= m.user.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
             </p>
           </div>
         </div>
-        <div class ="col-6"></div>
+        
       </div>
         <% else %>
         <div class ="row">
-          <div class ="col-6"></div>
         <div class ="col-6">
         <div class ="fikidasi">
           <div class ="faceicon">
@@ -35,13 +35,18 @@
           <div class ="says">
             <p>
               <%= m.content %><br>
-              <%= m.user.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
             </p>
           </div>
         </div>
       <% end %>
     <% end %>
-    
+    <div class ="col-6"></div>
+      </div>
+      </div>
+    <div class ="row">
+      <div class ="col-6"></div>
+      <div class ="col-6">
     <div class ="chat-form-box">
       <%= form_for @message do |f| %>
         <div class ="chat-form-group">
@@ -51,6 +56,6 @@
         </div>
       <% end %>
         </div>
-      </div>
-      </div>
+        </div>
+        </div>
   </div>

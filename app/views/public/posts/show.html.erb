@@ -1,5 +1,5 @@
 <div class ="container">
-  <h1>投稿の詳細</h1>
+  <h5>投稿の詳細</h5>
     <div class="col-sm-5">
       <div class="card">
           <div class="card-body">
@@ -14,9 +14,16 @@
                 <%= @post.user.nick_name %>
               </span>
               <% end %>
-              
+              <!--自分の投稿しか削除できない-->
+              <% if @post.user == current_user %>
+                <%#= link_to "削除", post_path(@post.id), method: :delete %>
+              <% end %>
+              <!--自分のコメントしか編集できない記述-->
+              <% if @post.user == current_user %>
+                <h6><%= link_to "編集する", edit_post_path(@post.id) %></h6>
+              <% end %>
             </h5>
-              <p class="card-text"><%= @post.content %></p>
+              <div class="card-text"><%= simple_format(@post.content) %></div>
                 <% if @post.favorited_by?(current_user) %>
               <p>
                   <%= link_to post_favorites_path(@post), method: :delete do %>
@@ -45,14 +52,17 @@
       <% @comments.each do |comment| %>
         <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
           <%= comment.user.name %>
-          <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
+          <small class="text-black-50">
+            <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </small>
+          <%= simple_format(comment.comment) %>
           <!--自分のコメントしか削除できない-->
           <% if comment.user == current_user %>
             <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete %>
           <% end %>
           <!--自分のコメントしか編集できない記述-->
           <% if comment.user == current_user %>
-          <%= link_to "編集する", post_comments_path(comment.id) %>
+          <%= link_to "編集する", edit_post_comment_path(comment.id) %>
           <% end %>
       <% end %>
     </div>
