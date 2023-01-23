@@ -1,57 +1,59 @@
-<h1>投稿の詳細</h1>
-<div class="col-sm-5">
-  <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= link_to user_path(@post.user.id),class: "btn btn-info" do %>
-          <span>
-            <% if @post.user.profile_image.attached? %>
-              <%= image_tag @post.user.profile_image, size: "50x50" %>
-            <% else %>
-              <%= image_tag "no_image.jpeg", size: "50x50" %>
-            <% end %>
-            <%= @post.user.nick_name %>
-          </span>
+<div class ="container">
+  <h1>投稿の詳細</h1>
+    <div class="col-sm-5">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to user_path(@post.user.id),class: "btn btn-info" do %>
+              <span>
+                <% if @post.user.profile_image.attached? %>
+                  <%= image_tag @post.user.profile_image, size: "50x50" %>
+                <% else %>
+                  <%= image_tag "no_image.jpeg", size: "50x50" %>
+                <% end %>
+                <%= @post.user.nick_name %>
+              </span>
+              <% end %>
+              
+            </h5>
+              <p class="card-text"><%= @post.content %></p>
+                <% if @post.favorited_by?(current_user) %>
+              <p>
+                  <%= link_to post_favorites_path(@post), method: :delete do %>
+                  ♥<%= @post.favorites.count %> いいね
+                  <% end %>
+              </p>
+                <% else %>
+              <p>
+                  <%= link_to post_favorites_path(@post), method: :post do %>
+                  ♡<%= @post.favorites.count %> いいね
+                  <% end %>
+              </p>
+                <% end %>
+          </div>
+            <p>コメント件数：<%= @comments.count %></p>
+            
+        </div>
+        <div>
+          <%= form_with model: [@post, @comment] do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
+            <%= f.submit "送信する" %>
           <% end %>
-          
-        </h5>
-          <p class="card-text"><%= @post.content %></p>
-            <% if @post.favorited_by?(current_user) %>
-          <p>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-              ♥<%= @post.favorites.count %> いいね
-              <% end %>
-          </p>
-            <% else %>
-          <p>
-              <%= link_to post_favorites_path(@post), method: :post do %>
-              ♡<%= @post.favorites.count %> いいね
-              <% end %>
-          </p>
-            <% end %>
+        </div>
       </div>
-        <p>コメント件数：<%= @comments.count %></p>
-        
-    </div>
     <div>
-      <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
-        <%= f.submit "送信する" %>
+      <% @comments.each do |comment| %>
+        <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
+          <%= comment.user.name %>
+          <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
+          <!--自分のコメントしか削除できない-->
+          <% if comment.user == current_user %>
+            <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete %>
+          <% end %>
+          <!--自分のコメントしか編集できない記述-->
+          <% if comment.user == current_user %>
+          <%= link_to "編集する", post_comments_path(comment.id) %>
+          <% end %>
       <% end %>
     </div>
-  </div>
-<div>
-  <% @comments.each do |comment| %>
-    <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-      <%= comment.user.name %>
-      <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M:%S') %><%= comment.comment %>
-      <!--自分のコメントしか削除できない-->
-      <% if comment.user == current_user %>
-        <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete %>
-      <% end %>
-      <!--自分のコメントしか編集できない記述-->
-      <% if comment.user == current_user %>
-      <%= link_to "編集する", post_comments_path(comment.id) %>
-      <% end %>
-  <% end %>
-</div>
+</duv>

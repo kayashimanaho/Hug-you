@@ -8,4 +8,12 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
+   def self.search(search) #self.でクラスメソッドとしている
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      Keyword.where(['content LIKE ?', "%#{search}%"])
+    else
+      Keyword.all #全て表示。
+    end
+   end
 end

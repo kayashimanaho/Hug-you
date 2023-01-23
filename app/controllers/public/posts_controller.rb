@@ -1,15 +1,15 @@
 class Public::PostsController < ApplicationController
    before_action :authenticate_user!, only: [:show, :create]
   def index
-    # @posts = Post.find(params[:id])
-    @posts = Post.page(params[:page]).per(6)
+    #キーワード検索
+    @posts = post.paginate(page: params[:page], per_page: 5).search(params[:search])
     @post = Post.new
     #いいねランキング
     @posts_favorites = Post.group(:user_id).includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
    
     #@posts = User.find(params[:id]).posts.all
-    # いろんなユーザの詳細ページに行きたいエラーになる
-    # @users = User.where.not(id: current_user.id) 
+    
+    
   end
 
   def show

@@ -1,35 +1,40 @@
-  <h5><%= @user.name %>さんの詳細ページ</h5>
-  <%= image_tag @user.get_profile_image(100,100) %><br>
- <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
-    <span><i class="fas fa-user-cog"></i></span>
-  <% end %><br>
-  <!--すでに部屋が存在しているかどうか分岐、
-  していなければformでコントローラーにパラメーターに送る-->
- <% unless @user.id == current_user.id %>
-   <% if @is_room == true %>
-    <%= link_to 'メッセージへ', room_path(@room_id) %>
-   <% else %>
-     <%= form_for @room do |f| %>
-       <%= fields_for @entry do |e| %>
-         <% e.hidden_field :user_id, value: @user.id %> 
-        <% end %>
-       <%= f.submit "メッセージを送る", class: "btn btn-info" %>
-      <% end %>
-  　<div>
-      <p>ニックネーム</p>
-      <%= @user.nick_name %>
-    </div>
-    <div>
-      <p>出身地</p>
-      <%= @user.from %>
-    </div>
-    <div>
-      <p>年齢</p>
-      <%= @user.age %>歳
-    </div>
-    <div>
-      <p>自己紹介文</p>
-      <%= @user.introduction %>
-    </div>
+  <div class ="container">
+    <h5><%= @user.nick_name %>さんの詳細ページ</h5>
+    <%= image_tag @user.get_profile_image(100,100) %><br>
+    <!--自分の編集画面-->
+    <% if @user == current_user %>
+    <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
+      <span><i class="fas fa-user-cog"></i></span>
+    <% end %><br>
     <% end %>
-  <% end %>
+    <!--すでに部屋が存在しているかどうか分岐、
+    していなければformでコントローラーにパラメーターに送る-->
+   <% unless @user.id == current_user.id %>
+     <% if @is_room == true %>
+      <%= link_to 'メッセージへ', room_path(@room_id) %>
+     <% else %>
+       <%= form_for @room do |f| %>
+         <%= fields_for @entry do |e| %>
+           <% e.hidden_field :user_id, value: @user.id %> 
+          <% end %>
+         <%= f.submit "メッセージを送る", class: "btn btn-info" %>
+        <% end %>
+    　<div>
+        <p>ニックネーム</p>
+        <%= @user.nick_name %>
+      </div>
+      <div>
+        <p>出身地</p>
+        <%= @user.from %>
+      </div>
+      <div>
+        <p>年齢</p>
+        <%= @user.age %>歳
+      </div>
+      <div>
+        <p>自己紹介文</p>
+        <%= @user.introduction %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
