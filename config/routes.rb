@@ -29,9 +29,9 @@ devise_for :users,skip: [:passwords], controllers: {
         resources :messages, only: [:create, :index]
         resources :rooms, only: [:create, :index, :show]
       
-      resources :posts, only: [:index, :show, :edit, :create, :destroy] do
+      resources :posts, only: [:index, :show, :edit, :update, :create, :destroy] do
         resources :comments, only: [:edit, :create, :destroy]
-        resource :favorites, only: [:create]
+        resource :favorites, only: [:create, :destroy]
       end
       #resources :comments, only: [:destroy]
       resources :cart_items, only:[:index, :update, :destroy, :create] do

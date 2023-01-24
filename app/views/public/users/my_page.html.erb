@@ -1,35 +1,26 @@
 <div class ="container">
-<h5><%= @user.name %>さんのマイページ</h5>
-  <%= image_tag @user.get_profile_image(100,100) %><br>
- <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
-        <span><i class="fas fa-user-cog"></i></span>
-      <% end %><br>
-  
-  
-  <%= link_to "ルーム一覧", rooms_path,class: "btn btn-info" %>
-  
-  <div>
-      <p>ニックネーム</p>
-      <%= @user.nick_name %>
-    </div>
-    <div>
-      <p>出身地</p>
-      <%= @user.from %>
-    </div>
-    <div>
-      <p>年齢</p>
-      <%= @user.age %>歳
-    </div>
-    <div>
-      <p>自己紹介文</p>
-      <%= @user.introduction %>
-    </div>
-  
+  <h5><%= @user.name %>さんのマイページ</h5>
+    <%= image_tag @user.get_profile_image(100,100) %><br>
+    <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
+      <span><i class="fas fa-user-cog"></i></span>
+    <% end %><br>
+    <table border="0" cellpadding="7" cellspacing="0" width="60%">
+      <tr><th><%= link_to "メッセージ一覧", rooms_path,class: "btn btn-outline-info" %></th><td></td></tr>
+      <tr><th>氏名</th><td><%= @user.name %></td></tr>
+      <tr><th>メールアドレス</th><td><%= @user.email %></td></tr>
+      <tr><th>ニックネーム</th><td><%= @user.nick_name %></td></tr>
+      <tr><th>住所</th><td><%= @user.address %></td></tr>
+      <tr><th>郵便番号</th><td><%= @user.postal_code %></td></tr>
+      <tr><th>居住地</th><td><%= @user.from %></td></tr>
+      <tr><th>年齢</th><td><%= @user.age %>歳</td></tr>
+      <tr><th>自己紹介文</th><td><%= @user.introduction %></td></tr>
+    </table>
+
   <div>今までの投稿履歴</div>
   <!--each文なんで構文エラーになるの-->
   <div>
-  <!--% @user each do |user| %>-->
-    <%#= user.posts.content %>
+  <!--% @posts each do |post| %>-->
+    <%#= post.content %>
   <!--% end %>-->
   </div>
 </div>

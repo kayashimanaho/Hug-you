@@ -1,28 +1,28 @@
 <div class ="container">
-  <div class ="row-5">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">新規登録がまだの方</h5>
-      <p class="card-text">下の新規登録ボタンを押してコミュニティに参加してください</p>
-      <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark',class: "btn btn-info"  %>
+  <div class ="row">
+    <div class = "col-md-5">
+      <div class="card mb-2" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">新規登録がまだの方</h5>
+            <p class="card-text">下の新規登録ボタンを押してコミュニティに参加してください</p>
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark',class: "btn btn-info"  %>
+        </div>
+      </div>
+      <div class="card mb-2" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">登録がお済みの方</h5>
+          <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark',class: "btn btn-info" %>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">登録がお済みの方</h5>
-      <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark',class: "btn btn-info" %>
+    <div class ="col-md-7">
+      <h5>子育てで繋がろう</h5>
+        <h1>Hug you</h1>
+        <h3>子育てに悩む全ての人へ</h3>
+          <h3>〜コミュニティで繋がる〜</h3>
     </div>
-  </div>
-  </div>
-  
-  <div class ="row-">
-    <h5>子育てで繋がろう</h5>
-    <h1>Hug you</h1>
-    <h3>子育てに悩む全ての人へ</h3>
-    <h3>〜コミュニティで繋がろう〜</h3>
   </div>
 </div>
-  
+
   
 

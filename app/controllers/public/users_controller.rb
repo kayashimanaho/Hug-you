@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   def my_page
     @user = current_user
     @users = User.all
+    @posts = @user.posts.all
     @comments = Comment.all
   end
 

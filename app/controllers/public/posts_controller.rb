@@ -23,6 +23,12 @@ class Public::PostsController < ApplicationController
     # @user = User.find(params[:id])
     @comments = @post.comments #投稿ごとにコメントを分ける
   end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
+  
 
   def create
     @post = Post.new(post_params)
@@ -37,6 +43,16 @@ class Public::PostsController < ApplicationController
     end
   end
   
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "投稿の変更に成功しました"
+      redirect_to post_path(@post.id)
+    else
+      render :edit
+    end
+  end
+  
   def destroy
     @post = current_user
     @post.destroy
@@ -47,7 +63,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :content, :public_flag)
+    params.require(:post).permit(:content)
   end
   
 end
