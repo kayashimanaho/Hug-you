@@ -22,5 +22,11 @@ body {
 }
 
 .header {
-   background: image-url("hd.jpg") 
+   background-image: url("/hd1.jpg");
+}
+
+footer{
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+    width: 100%;
 }

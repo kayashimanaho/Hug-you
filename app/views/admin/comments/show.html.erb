@@ -5,4 +5,5 @@
       <tr><th>コメント</th><td><%= @comment.comment %></td></tr>
     </table>  
     <%= link_to "編集する",  edit_admin_comment_path, class:' btn btn-info' %>
+    <%= link_to "削除",  admin_comment_path(@comment.id), method: :delete %>
 </div>

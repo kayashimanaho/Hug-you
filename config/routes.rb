@@ -56,8 +56,9 @@ devise_for :users,skip: [:passwords], controllers: {
     resources :order_details,only:[:update]
     resources :orders, only:[:show, :index, :update]
     resources :users, only:[:show, :edit, :update]
-    resources :comments,only:[:index, :show, :edit, :update]
-    resources :keywords,only:[:index, :show, :edit, :update]
+    resources :posts,only:[:index, :show, :edit, :update, :destroy]
+    resources :comments,only:[:index, :show, :edit, :update, :destroy]
+    resources :keywords,only:[:index, :show, :edit, :update, :destroy]
   end
 
 end

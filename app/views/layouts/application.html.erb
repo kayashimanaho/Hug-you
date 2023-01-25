@@ -37,6 +37,9 @@
             </li>
             <% elsif admin_signed_in? %>
             <li class="nav-item">
+              <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-white' %>
+            </li>
+            <li class="nav-item">
               <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
@@ -67,7 +70,8 @@
     <main class="mb-auto">
     <%= yield %>
     </main>
-    <footer class="p-3 bg-info text-white pb-4">
+    <footer>
+     <div class="p-3 bg-info text-white pb-4">
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4">
@@ -86,6 +90,7 @@
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   </body>

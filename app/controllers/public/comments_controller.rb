@@ -1,6 +1,5 @@
 class Public::CommentsController < ApplicationController
-  def index
-  end
+ 
   
   def create
     posts = Post.find(params[:post_id])
@@ -12,7 +11,6 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     #byebug
-    #@comment = current_user
     post = Post.find(params[:post_id])
     comment = Comment.find(params[:id])    
     comment.destroy

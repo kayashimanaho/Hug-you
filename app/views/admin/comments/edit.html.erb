@@ -2,9 +2,10 @@
   <h5>管理者コメント編集</h5>
   <%= form_with model: @comment, url: admin_comment_path do |f| %>
     <table border="0" cellpadding="7" cellspacing="0" width="30%">
-      <tr><th>コメントしたユーザー</th><td><%= f.text_field :name, autofocus: true, id:"inputName" %></td></tr>
+      <tr><th>コメントしたユーザー</th><td><%= @comment.user.name %></td></tr>
       <tr><th>コメント</th><td><%= f.text_area :comment, autofocus: true, id:"inputComment" %></td></tr>
+      <tr><th></th><td><%= f.submit "変更を保存", class: "btn btn-outline-info" %></td></tr>
     </table>  
-    <%= f.submit "変更を保存", class: "btn btn-info" %>
+    
     <% end %>
 </div>
