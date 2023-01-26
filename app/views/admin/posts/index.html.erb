@@ -17,7 +17,7 @@
           <td><%= post.user.nick_name %></td>
           <td><%= link_to post.content.truncate(10),admin_post_path(post.id) %></td>
           <!--投稿に対するコメント詳細に行きたい-->
-          <td><%#= link_to "コメント詳細へ" ,admin_comment_path(@comments.post.id) %></td>
+          <td><%= link_to "コメント一覧へ" ,admin_comments_path(post.id,@comment) %></td>
         <% end %>
       </tbody>
       </table>

@@ -23,11 +23,11 @@
           <div class="card-body text-dark">
             <h6 class="card-title">みんなのいいね TOP10</h6>
             <p class="card-text">
-              <% @posts_favorites.each.with_index(1) do |post, i| %>
+              <% @user_favorites.each.with_index(1) do |user, i| %>
               <p>
                 第<%= i %>位
-                <%= post.user.nick_name %>
-                ♡<%=post.favorites.size%>
+                <%= user.nick_name %>
+                ♡<%=user.favorite_count %>
               </p>
               <% end %>
             </p>

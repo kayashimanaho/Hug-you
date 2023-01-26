@@ -10,10 +10,13 @@ class Public::PostsController < ApplicationController
     
     @post = Post.new
     #いいねランキング
-    @posts_favorites = Post.group(:user_id).includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
-   
-    #@posts = User.find(params[:id]).posts.all
-    
+    @user_favorites = User
+      .joins({posts: :favorites})
+      .group("posts.user_id")
+      .select("users.*, count(favorites.id) AS favorite_count")
+      .having("users.is_deleted = false")
+      .order("count(favorites.id) DESC")
+      .limit(10)
     
   end
 

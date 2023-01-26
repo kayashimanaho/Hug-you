@@ -52,7 +52,7 @@
     <div class ="ml-5 mt-2">
       <% @comments.each do |comment| %>
         <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-          <%= comment.user.name %>
+          <%= comment.user.nick_name %>
           <small class="text-black-50">
             <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M') %>
           </small>

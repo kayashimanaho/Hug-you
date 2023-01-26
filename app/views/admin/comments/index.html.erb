@@ -1,5 +1,5 @@
 <div class ="container">
-  <h5>管理者コメント一覧</h5>
+  <h5>管理者投稿に対してのコメント一覧</h5>
     <table border="0" cellpadding="11" cellspacing="0" width="95%">
         <thead>
           <tr>
@@ -10,11 +10,11 @@
          </tr>
       </thead>
       <tbody>
-        <% @comments.each do |c| %>
+        <% @comments.each do |comment| %>
         <tr>
-          <td><%= c.user.name %></td>
-          <td><%= c.user.nick_name %></td>
-          <td><%= link_to c.comment,admin_comment_path(c.id) %></td>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.user.nick_name %></td>
+          <td><%= link_to comment.comment,admin_comment_path(comment.id) %></td>
           <td></td>
         <% end %>
       </tbody>

@@ -5,9 +5,9 @@ class Admin::CommentsController < ApplicationController
   end
   
   def show
-    @comments =Commtent.all
+    @post = Post.find(params[:id])
     @comment = Comment.find(params[:id])
-    @post =Post.find(params[:id])
+    # @posts = Post.
   end
   
   def edit
