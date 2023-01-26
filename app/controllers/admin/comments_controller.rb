@@ -5,6 +5,7 @@ class Admin::CommentsController < ApplicationController
   end
   
   def show
+    @comments =Commtent.all
     @comment = Comment.find(params[:id])
     @post =Post.find(params[:id])
   end

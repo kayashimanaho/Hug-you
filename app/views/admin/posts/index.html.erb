@@ -1,1 +1,27 @@
-<h5>管理者投稿一覧</h5>
+<%= flash[:notice] %>
+<div class ="container">
+  <h5>管理者投稿一覧</h5>
+    <table border="0" cellpadding="11" cellspacing="0" width="95%">
+        <thead>
+          <tr>
+            <th width="10%">氏名</th>
+            <th width="10%">ニックネーム</th>
+            <th width="20%">投稿</th>
+            <th width="20%">コメント</th>
+         </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.user.name %></td>
+          <td><%= post.user.nick_name %></td>
+          <td><%= link_to post.content.truncate(10),admin_post_path(post.id) %></td>
+          <!--投稿に対するコメント詳細に行きたい-->
+          <td><%#= link_to "コメント詳細へ" ,admin_comment_path(@comments.post.id) %></td>
+        <% end %>
+      </tbody>
+      </table>
+      <div class="d-flex align-items-center justify-content-center">
+        <%= paginate @comments %>
+      </div>
+  </div>

@@ -1,0 +1,11 @@
+<div class ="container">
+  <h5>管理者投稿編集</h5>
+  <%= form_with model: @post, url: admin_post_path do |f| %>
+    <table border="0" cellpadding="7" cellspacing="0" width="30%">
+      <tr><th>投稿したユーザー</th><td><%= @post.user.name %></td></tr>
+      <tr><th>投稿内容</th><td><%= f.text_area :content, autofocus: true, id:"inputContent" %></td></tr>
+      <tr><th></th><td><%= f.submit "変更を保存", class: "btn btn-outline-info" %></td></tr>
+    </table>  
+    
+    <% end %>
+</div>

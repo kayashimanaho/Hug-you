@@ -1,6 +1,7 @@
 <%= flash[:notice] %>
 <div class ="container">
   <h5>投稿の詳細</h5>
+  <div class ="row">
     <div class="col-sm-5">
       <div class="card">
           <div class="card-body">
@@ -17,7 +18,7 @@
               <% end %>
               <!--自分の投稿しか削除できない-->
               <% if @post.user == current_user %>
-                <%#= link_to "削除", post_path(@post.id), method: :delete %>
+                <%= link_to "削除", post_path(@post.id), method: :delete %>
               <% end %>
               <!--自分のコメントしか編集できない記述-->
               <% if @post.user == current_user %>
@@ -42,14 +43,13 @@
             <p>コメント件数：<%= @comments.count %></p>
             
         </div>
-        <div>
+      </div>
+        <div class ="mt-2">
           <%= form_with model: [@post, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く",size: "50%" %>
             <%= f.submit "送信する" %>
           <% end %>
-        </div>
-      </div>
-    <div>
+    <div class ="ml-5 mt-2">
       <% @comments.each do |comment| %>
         <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
           <%= comment.user.name %>
@@ -66,5 +66,7 @@
           <%= link_to "編集する", edit_post_comment_path(comment.id) %>
           <% end %>
       <% end %>
+    </div>
+        </div>
     </div>
 </duv>

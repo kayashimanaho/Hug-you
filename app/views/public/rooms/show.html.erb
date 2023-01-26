@@ -1,8 +1,8 @@
 <div class ="container">
-  <div class="title">
-    <h4>
+  <div class="title text-center">
+    <h5>
       <%= ("#{@another_entry.user.nick_name}さんとのメッセージ") %>
-    </h4>
+    </h5>
   </div>
   
     <% @messages.each do |m| %>
@@ -15,7 +15,9 @@
               <%= image_tag m.user.get_profile_image(100,100) %>
               <%= m.user.nick_name %>: <br>
               <%= m.content %><br>
-              <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+              <small class="text-black-50">
+                <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+              </small>
             </p>
           </div>
         </div>
@@ -24,18 +26,17 @@
         <% else %>
         <div class ="row">
         <div class ="col-6">
-        <div class ="fikidasi">
-          <div class ="faceicon">
-            <%#= image_tag m.user.email %>
-          </div>
-        </div>
+        
+          
         <%= image_tag m.user.get_profile_image(100,100) %>
         <%= m.user.nick_name %>
         <div class ="chatting">
           <div class ="says">
             <p>
               <%= m.content %><br>
-              <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+              <small class="text-black-50">
+                <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+              </small>
             </p>
           </div>
         </div>
@@ -45,8 +46,8 @@
       </div>
       </div>
     <div class ="row">
-      <div class ="col-6"></div>
-      <div class ="col-6">
+      
+     
     <div class ="chat-form-box">
       <%= form_for @message do |f| %>
         <div class ="chat-form-group">
@@ -57,5 +58,5 @@
       <% end %>
         </div>
         </div>
-        </div>
+      
   </div>

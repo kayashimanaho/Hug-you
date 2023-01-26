@@ -1,0 +1,11 @@
+<div class ="container">
+  <h4>管理者投稿詳細</h4>
+    <table border="0" cellpadding="7" cellspacing="0" width="30%">
+      <tr><th>投稿したユーザー</th><td><%= @post.user.name %></td></tr>
+      <tr><th>投稿内容</th><td><%= @post.content %></td></tr>
+      <tr><th></th><td>
+        <%= link_to "編集する",  edit_admin_post_path, class:' btn btn-outline-info' %>
+        <%= link_to "削除",  admin_post_path(@post.id), class:' btn btn-outline-danger',method: :delete %>
+      </td></tr>
+    </table>  
+</div>
