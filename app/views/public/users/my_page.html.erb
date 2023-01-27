@@ -1,5 +1,7 @@
 <div class ="container">
   <h5><%= @user.name %>さんのマイページ</h5>
+  <div class ="row">
+    <div class ="col-6">
     <%= image_tag @user.get_profile_image(100,100) %><br>
     <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
       <span><i class="fas fa-user-cog"></i></span>
@@ -15,12 +17,15 @@
       <tr><th>年齢</th><td><%= @user.age %>歳</td></tr>
       <tr><th>自己紹介文</th><td><%= @user.introduction %></td></tr>
     </table>
-
+    </div>
+    <div class ="col-6">
   <div>今までの投稿履歴</div>
   <!--each文なんで構文エラーになるの-->
   <div>
   <!--% @posts each do |post| %>-->
     <%#= post.content %>
   <!--% end %>-->
+  </div>
+  </div>
   </div>
 </div>

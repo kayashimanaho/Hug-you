@@ -1,23 +1,55 @@
+
+
 <div class="container">
-<h5>新規会員登録</h5>
-
-<%= form_with model: @user, url: user_registration_path do |f| %>
-
-  <%= render "public/shared/error_messages", resource: resource %>
-  
-  <table border="0" cellpadding="11" cellspacing="0" width="60%", style="font-size : 13px;">
-    <tr><th>氏名</th><td><%= f.text_field :name, placeholder:"令和 道子" %></td></tr>
-    <tr><th>メールアドレス</th><td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@test" %></td></tr>
-    <tr><th>郵便番号（ハイフンなし）</th><td><%= f.text_field :postal_code, placeholder:"0000000" %></td></tr>
-    <tr><th>住所</th><td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町０−０",size: 50 %></td></tr>
-    <tr><th>パスワード（６文字以上）</th><td>
-      <% if @minimum_password_length %>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %></td></tr>
-    <tr><th>パスワード（確認用）</th><td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td></tr>
-    <tr><th></th><td><%= f.submit "新規登録" %></td></tr>
-    <tr><th>登録がお済みの方</th><td><%= link_to "ログイン",new_user_session_path %></td></tr>
-    <% end %>
-  </table>
-
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">新規会員登録</h5>
+      <div class="form-body p-4">
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.text_field :name, autofocus: true, placeholder:"山田 花子" %>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fa-sharp fa-solid fa-envelope"></i></span>
+            </div>
+            <%= f.text_field :email, autofocus: true, placeholder:"sample@test" %>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-signs-post"></i></span>
+            </div>
+            <%= f.text_field :postal_code, autofocus: true, placeholder:"0000000(ハイフンなし)" %>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-address-card"></i></span>
+            </div>
+            <%= f.text_field :address, autofocus: true, placeholder:"東京都板橋区０−０",size: 30 %>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-lock"></i></span>
+            </div>
+             <% if @minimum_password_length %>
+             <% end %><br />
+             <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード(6文字以上)" %><br>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-lock"></i></span>
+            </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード確認用" %>
+          </div>
+          <%= f.submit "新規登録", class:"btn btn-lg btn-block btn-outline-info mt-5" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+<div class ="text-center">
+  <h6>会員登録がお済みでない方</h6>
+    <a><%= link_to "こちら",new_user_registration_path %>から新規登録してね</a>
 </div>
