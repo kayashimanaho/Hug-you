@@ -1,54 +1,32 @@
 <div class ="container">
-  <div class="title text-center">
-    <h5>
-      <%= ("#{@another_entry.user.nick_name}さんとのメッセージ") %>
-    </h5>
+  <div class="title text-center mt-3">
+    <h5><%= ("#{@another_entry.user.nick_name}さんとのメッセージ") %></h5>
   </div>
   
     <% @messages.each do |m| %>
       <% if m.user_id == current_user.id %>
-      <div class ="row">
-          <div class ="col-6"></div>
-        <div class ="col-6">
-          <div class ="mycomment">
-            <p>
-              <%= image_tag m.user.get_profile_image(100,100) %>
-              <%= m.user.nick_name %>: <br>
-              <%= m.content %><br>
-              <small class="text-black-50">
-                <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
-              </small>
-            </p>
-          </div>
-        </div>
-        
+      <div class ="current_user">
+        <strong class="current_user"><%= m.content %></strong>
+        <small class="current_user"><%= m.user.nick_name %></small>
       </div>
-        <% else %>
-        <div class ="row">
-        <div class ="col-6">
-        
-          
-        <%= image_tag m.user.get_profile_image(100,100) %>
-        <%= m.user.nick_name %>
-        <div class ="chatting">
-          <div class ="says">
-            <p>
-              <%= m.content %><br>
+      <div class ="time">
+          <small class="text-black-50">
+            <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </small>
+          </div>
+      <% else %>
+        <div class="visited_user">
+          <strong class="visited_user"><%= m.content %></strong>
+          <small class="visited_user"><%= m.user.nick_name %></small>
+        </div>
               <small class="text-black-50">
                 <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
               </small>
-            </p>
-          </div>
-        </div>
       <% end %>
     <% end %>
-    <div class ="col-6"></div>
-      </div>
-      </div>
-    <div class ="row">
-      
      
-    <div class ="chat-form-box">
+    <div class ="current_user_1 mt-3">
+      
       <%= form_for @message do |f| %>
         <div class ="chat-form-group">
           <%= f.text_field :content %>
@@ -56,7 +34,6 @@
           <%= f.submit "送信する" %>
         </div>
       <% end %>
-        </div>
-        </div>
-      
-  </div>
+      </div>
+  
+</div>

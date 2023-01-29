@@ -2,19 +2,28 @@
   <div class="cover-user-index">
   <%= flash[:notice] %>
   <div class ="row">
-    <div class ="col-9">
+    <div class ="col-9 mt-4">
       <h2>みんなで子育てについて語り合おう</h2>
       <!--キーワード検索-->
-      <%= form_tag(posts_path, :method => "get") do %>
-        <%= text_field_tag :search %> 
-        <%= submit_tag "検索" ,:username => nil ,class: "button is-info"%> 
-      <% end %>
+      <div class ="row">
+        <div class ="text-right col-3 mt-5">
+          <a>キーワード検索</a>
+            <%= form_tag(posts_path, :method => "get") do %>
+            <%= text_field_tag :search %> 
+              <div class ="mt-2">
+                <%= submit_tag "検索" ,:username => nil ,class: "button is-info"%> 
+              </div>
+            <% end %>
+        </div>
+        <div class ="text-right col-3 mt-3 ml-5">
       <!--投稿フォーム-->
-        <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-        <h4></h4>
-        <%= f.text_area :content, placeholder:"投稿しよう"  %>
-        <%= f.submit '投稿' %>
-        <% end %>
+          <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+          <h4></h4>
+            <%= f.text_area :content, size: "44x4",placeholder:"投稿しよう"  %>
+            <%= f.submit '投稿' %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <!--いいねランキング-->
     <div class ="col-3">

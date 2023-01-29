@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'notifications/index'
+  end
  # 顧客用
 # URL /users/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {

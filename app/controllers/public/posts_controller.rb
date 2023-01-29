@@ -1,12 +1,8 @@
 class Public::PostsController < ApplicationController
    before_action :authenticate_user!, only: [:show, :create]
   def index
-    #キーワード検索
-    # if params[:search]
-      @posts = Post.search(params[:search]).page(params[:page]).per(6)
-    # else
-    #   @posts = Post.page(params[:page]).per(5)
-    # end
+    #キーワード検索と新着投稿順
+    @posts = Post.search(params[:search]).order(created_at: :desc).page(params[:page]).per(6)
     
     @post = Post.new
     #いいねランキング

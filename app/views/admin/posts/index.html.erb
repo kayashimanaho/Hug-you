@@ -7,7 +7,6 @@
             <th width="10%">氏名</th>
             <th width="10%">ニックネーム</th>
             <th width="20%">投稿</th>
-            <th width="20%">コメント</th>
          </tr>
       </thead>
       <tbody>
@@ -16,8 +15,6 @@
           <td><%= post.user.name %></td>
           <td><%= post.user.nick_name %></td>
           <td><%= link_to post.content.truncate(10),admin_post_path(post.id) %></td>
-          <!--投稿に対するコメント詳細に行きたい-->
-          <td><%= link_to "コメント一覧へ" ,admin_comments_path(post.id,@comment) %></td>
         <% end %>
       </tbody>
       </table>
