@@ -28,6 +28,8 @@ devise_for :users,skip: [:passwords], controllers: {
           patch 'withdraw' 
       end
     end
+        #メッセージ通知
+        resources :notifications, only: [:index, :update]
         # メッセージ機能
         resources :messages, only: [:create, :index]
         resources :rooms, only: [:create, :index, :show]

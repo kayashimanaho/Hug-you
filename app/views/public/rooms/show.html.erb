@@ -11,7 +11,7 @@
       </div>
       <div class ="time">
           <small class="text-black-50">
-            <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+            <%= m.created_at.strftime('%Y/%m/%d %H:%M') %>
           </small>
           </div>
       <% else %>
@@ -20,7 +20,7 @@
           <small class="visited_user"><%= m.user.nick_name %></small>
         </div>
               <small class="text-black-50">
-                <%= m.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+                <%= m.created_at.strftime('%Y/%m/%d %H:%M') %>
               </small>
       <% end %>
     <% end %>
