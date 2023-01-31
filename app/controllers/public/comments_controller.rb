@@ -1,7 +1,7 @@
 class Public::CommentsController < ApplicationController
   def edit
    @post = Post.find(params[:id])  
-   @comment = Comment.find(params[:id])
+   @comment = Comment.find(params[:post_id])
   end
   
   def create
@@ -16,7 +16,7 @@ class Public::CommentsController < ApplicationController
     comment = Comment.find(params[:post_id])
     if comment.update(comment_params)
       flash[:notice] = "コメントの変更に成功しました"
-      redirect_to post_path(post.id)
+      redirect_to post_path
     else
       render :edit
     end

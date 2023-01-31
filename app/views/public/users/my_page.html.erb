@@ -2,15 +2,16 @@
   <h5><%= @user.name %>さんのマイページ</h5>
     <div class ="row">
       <div class ="col-6">
-        
         <%= image_tag @user.get_profile_image(100,100) %><br>
-        <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
-          <span><i class="fas fa-user-cog"></i></span>
-        <% end %>
-        <%= link_to rooms_path,class: 'btn btn-outline-info' do %>
-          <span>メッセージ一覧</span>
-        <% end %>
-        <table border="0" cellpadding="7" cellspacing="0" width="60%">
+        <div class ="mt-2 mb-2">
+          <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
+            <span><i class="fas fa-user-cog"></i></span>
+          <% end %>
+          <%= link_to rooms_path,class: 'btn btn-outline-info' do %>
+            <span>メッセージ一覧</span>
+          <% end %>
+        </div>
+        <table border="3" cellpadding="7" cellspacing="0" width="60%">
           <tr><th>氏名</th><td><%= @user.name %></td></tr>
           <tr><th>メールアドレス</th><td><%= @user.email %></td></tr>
           <tr><th>ニックネーム</th><td><%= @user.nick_name %></td></tr>
@@ -23,12 +24,23 @@
       </div>
       <div class ="col-6">
         <div>今までの投稿履歴</div>
-  <!--each文なんで構文エラーになるの-->
-        <div>
-  <!--% @posts each do |post| %>-->
-    <%#= post.content %>
-  <!--% end %>-->
-        </div>
+          <table border="0" cellpadding="11" cellspacing="0" width="95%">
+            <thead>
+              <tr>
+                <th width="10%">投稿日時</th>
+                <th width="20%">投稿</th>
+             </tr>
+            </thead>
+            <tbody>
+              <% @posts.each do |post| %>
+              <tr>
+                <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+                <td><%= post.content %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
       </div>
     </div>
+  </div>
 </div>

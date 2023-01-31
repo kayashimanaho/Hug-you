@@ -6,8 +6,8 @@ class Admin::CommentsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    @comment = Comment.find(params[:id])
-    # @posts = Post.
+    @comment = Comment.find(params[:post_id])
+  
   end
   
   def edit
@@ -15,10 +15,10 @@ class Admin::CommentsController < ApplicationController
   end
   
   def update
-    comment = Comment.find(params[:id])
+    comment  = Comment.find(params[:id])
     if comment.update(comment_params)
       flash[:notice] = "コメントの変更に成功しました"
-      redirect_to admin_post_path(post.id,comment.id)
+      redirect_to admin_post_path(comment.post_id)
     else
       render :edit
     end
@@ -27,7 +27,7 @@ class Admin::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
-    redirect_to  admin_comments_path
+    redirect_to  admin_comment_path(comment.id)
     
   end
   

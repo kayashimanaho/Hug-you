@@ -26,9 +26,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-            <%= link_to notifications_path,class: 'btn btn-outline-danger' do %>
-              <span><i class="fa-solid fa-bell"></i></span>
-            <% end %>
+            <li class ="nav-item">
+             <% if unchecked_notifications.any? %>
+               <%= link_to I18n.t('header.notice'), notifications_path , class: "nav-link notice-active" %>
+             <% else %>  
+               <%= link_to I18n.t('header.notice'), notifications_path , class: "nav-link" %>
+             <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to "コミュニティルーム", posts_path, class: 'nav-link text-white' %>
             </li>

@@ -1,8 +1,16 @@
-  <div class ="container">
-    <h6><%= @user.nick_name %>さんの詳細ページ</h6>
-    <%= image_tag @user.get_profile_image(100,100) %><br>
+  <div class ="container mt-3">
+    <h5><%= @user.nick_name %></h5>
+   
+      <div class="card" style="width: 18rem;">
+  <%= image_tag @user.get_profile_image(50,50) %><br>
     <!--自分の編集画面-->
     <% if @user == current_user %>
+    <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
+      <span><i class="fas fa-user-cog"></i></span>
+    <% end %><br>
+    <% end %>
+  <div class="card-body">
+    <h5 class="card-title">自己紹介 <% if @user == current_user %>
     <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
       <span><i class="fas fa-user-cog"></i></span>
     <% end %><br>
@@ -21,20 +29,12 @@
         <% end %>
       <% end %>
     <% end %>
-    　<div>
-        <p>ニックネーム</p>
-        <%= @user.nick_name %>
-      </div>
-      <div>
-        <p>出身地</p>
-        <%= @user.from %>
-      </div>
-      <div>
-        <p>年齢</p>
-        <%= @user.age %>歳
-      </div>
-      <div>
-        <p>自己紹介文</p>
-        <%= @user.introduction %>
-      </div>
+    </h5>
+    <p class="card-text"><%= @user.introduction %></p>
   </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">ニックネーム : <%= @user.nick_name %></li>
+    <li class="list-group-item">居住地 : <%= @user.from %></li>
+    <li class="list-group-item">年齢 : <%= @user.age %>歳</li>
+  </ul>
+</div></div>

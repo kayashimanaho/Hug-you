@@ -1,4 +1,4 @@
-<div class ="container">
+<div class ="container mt-3">
   <h4>管理者投稿詳細</h4>
     <table border="0" cellpadding="7" cellspacing="0" width="30%">
       <tr><th>投稿したユーザー</th><td><%= @post.user.name %></td></tr>
@@ -8,8 +8,6 @@
         <%= link_to "削除",  admin_post_path(@post.id), class:' btn btn-outline-danger',method: :delete %>
       </td></tr>
     </table> 
-    
-    <h5>投稿に対しての全てのコメントを出したい</h5>
     <table border="0" cellpadding="11" cellspacing="0" width="95%">
         <thead>
           <tr>
@@ -21,7 +19,7 @@
         <% @comments.each do |comment| %>
         <tr>
           <td><%= comment.user.name %></td>
-          <td><%= link_to comment.comment,admin_comment_path(comment.id) %></td>
+          <td><%= link_to comment.comment,edit_admin_comment_path(comment.id) %></td>
           <td></td>
         <% end %>
       </tbody>
