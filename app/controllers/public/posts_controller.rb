@@ -30,21 +30,21 @@ class Public::PostsController < ApplicationController
   
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    if @post.save
+    post = Post.new(post_params)
+    post.user_id = current_user.id
+    if post.save
       flash[:notice] = "投稿が成功しました."
        redirect_to posts_path
     else
-      @posts = Post.all
-      @user = current_user
+      posts = Post.all
+      user = current_user
       render :index
     end
   end
   
   def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
+    post = Post.find(params[:id])
+    if post.update(post_params)
       flash[:notice] = "投稿の変更に成功しました"
       redirect_to post_path(@post.id)
     else
@@ -53,8 +53,8 @@ class Public::PostsController < ApplicationController
   end
   
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    post = Post.find(params[:id])
+    post.destroy
     redirect_to posts_path
    
   end

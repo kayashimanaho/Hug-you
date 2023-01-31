@@ -15,6 +15,13 @@ class Admin::CommentsController < ApplicationController
   end
   
   def update
+    comment = Comment.find(params[:id])
+    if comment.update(comment_params)
+      flash[:notice] = "コメントの変更に成功しました"
+      redirect_to admin_post_path(post.id,comment.id)
+    else
+      render :edit
+    end
   end
   
   def destroy

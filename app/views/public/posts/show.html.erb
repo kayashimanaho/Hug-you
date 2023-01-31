@@ -15,10 +15,10 @@
                 <% end %>
                 <%= @post.user.nick_name %>
               </span>
-              <% end %>
+              <% end %><br>
               <!--自分の投稿しか削除できない-->
               <% if @post.user == current_user %>
-                <%= link_to "削除", post_path(@post.id), method: :delete %>
+                <h6><%= link_to "削除", post_path(@post.id), method: :delete %></h6>
               <% end %>
               <!--自分のコメントしか編集できない記述-->
               <% if @post.user == current_user %>

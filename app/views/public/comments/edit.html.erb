@@ -1,5 +1,10 @@
 <div class ="container">
   <h4>コメント編集</h4>
-  
+  <%= form_with model: @comment, url: post_comment_path,method: :patch do |f| %>
+    <table border="0" cellpadding="7" cellspacing="0" width="60%">
+      <tr><th>コメント内容</th><td><%= f.text_area :comment, autofocus: true, id:"inputComment" %></td></tr>
+      <tr><th></th><td><%= f.submit "変更を保存", class: "btn btn-success" %></td></tr>
+    </table>
+  <% end %>
 </div>
 
