@@ -2,7 +2,7 @@
     <h5><%= @user.nick_name %></h5>
    
       <div class="card" style="width: 18rem;">
-  <%= image_tag @user.get_profile_image(50,50) %><br>
+  <%= image_tag @user.get_profile_image(100,100), class: "mx-auto d-block w-50" %><br>
     <!--自分の編集画面-->
     <% if @user == current_user %>
     <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
@@ -19,13 +19,13 @@
     していなければformでコントローラーにパラメーターに送る-->
    <% unless @user.id == current_user.id %>
      <% if @is_room == true %>
-      <%= link_to 'メッセージへ', room_path(@room_id) %>
+      <%= link_to 'メッセージへ', room_path(@room_id), class: "btn btn-outline-info" %>
      <% else %>
        <%= form_for @room do |f| %>
          <%= fields_for @entry do |e| %>
            <% e.hidden_field :user_id, value: @user.id %> 
           <% end %>
-         <%= f.submit "メッセージを送る", class: "btn btn-info" %>
+         <%= f.submit "メッセージを送る", class: "btn btn-outline-info" %>
         <% end %>
       <% end %>
     <% end %>

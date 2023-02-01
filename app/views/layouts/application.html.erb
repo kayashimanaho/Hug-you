@@ -26,12 +26,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
+            <!--DMが来たら通知してくれる記述-->
             <li class ="nav-item">
-             <!--% if unchecked_notifications.any? %>-->
-               <%#= link_to I18n.t('header.notice'), notifications_path , class: "nav-link notice-active" %>
-             <!--% else %>  -->
-               <%#= link_to I18n.t('header.notice'), notifications_path , class: "nav-link" %>
-             <!--% end %>-->
+             <% if unchecked_notifications.any? %>
+               <%= link_to "通知", notifications_path , class: "nav-link notice-active" %>
+             <% else %>
+               <%= link_to "通知", notifications_path , class: "nav-link" %>
+             <% end %>
             </li>
             <li class="nav-item">
               <%= link_to "コミュニティルーム", posts_path, class: 'nav-link text-dark' %>
@@ -80,13 +81,13 @@
           <div class="col-md-4">
             <div class ="footer-text">
               <strong>子育てに悩む人の為のコミュニティーサイト</strong>
-          </div>
             </div>
+          </div>
           <div class="col-md-8">
             <strong class="text-white mt-2 mb-3">Link</strong>
             <ul class="p-0 list-unstyled">
               <li>
-                <%= link_to "プライバシーポリシー", privacy_path %>
+                <%= link_to "プライバシーポリシー", privacy_path, class: "link" %>
               </li>
             </ul>
           </div>
