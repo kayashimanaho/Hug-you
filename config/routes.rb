@@ -18,6 +18,7 @@ devise_for :users,skip: [:passwords], controllers: {
  scope module: :public do
       root to:"homes#top"
       get "/about" => "homes#about", as: "about"
+      get "/privacy" => "homes#privacy", as: "privacy"
       # resources :items, only:[:index, :show]
       resources :users, only: [:index, :create, :show] do
         collection do

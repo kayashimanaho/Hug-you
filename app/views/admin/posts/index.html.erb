@@ -5,7 +5,8 @@
         <thead>
           <tr>
             <th width="10%">氏名</th>
-            <th width="10%">ニックネーム</th>
+            <th width="15%">ニックネーム</th>
+            <th width="20%">投稿日時</th>
             <th width="20%">投稿</th>
          </tr>
       </thead>
@@ -14,6 +15,7 @@
         <tr>
           <td><%= post.user.name %></td>
           <td><%= post.user.nick_name %></td>
+          <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
           <td><%= link_to post.content.truncate(10),admin_post_path(post.id) %></td>
         <% end %>
       </tbody>
