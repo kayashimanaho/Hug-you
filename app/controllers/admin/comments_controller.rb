@@ -27,7 +27,8 @@ class Admin::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
-    redirect_to  admin_comment_path(comment.id)
+    flash[:notice] = "コメントの削除に成功しました"
+    redirect_to  admin_posts_path
     
   end
   

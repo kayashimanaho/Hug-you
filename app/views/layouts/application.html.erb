@@ -38,6 +38,12 @@
               <%= link_to "コミュニティルーム", posts_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
+              <%= link_to "出品する", items_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "買い物する", items_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
               <%= link_to 'マイページ', my_page_users_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
@@ -84,7 +90,7 @@
             </div>
           </div>
           <div class="col-md-8">
-            <strong class="text-white mt-2 mb-3">Link</strong>
+            <%= link_to "お問い合わせ", new_contact_path, class: "link" %>
             <ul class="p-0 list-unstyled">
               <li>
                 <%= link_to "プライバシーポリシー", privacy_path, class: "link" %>

@@ -47,10 +47,11 @@
   <div class="row">
     <% @posts.each do |posts| %>
     <!--３回で折り返す-->
-    <div class
     <div class="col-sm-4">
       <div class="card shadow-lg mb-2">
         <div class="card-body">
+          <!--card自体をリンクにしたい-->
+          <%= link_to post_path(posts.id) do %>
           <h5 class="card-title">
             <!--押したユーザーの投稿詳細に行きたい-->
             <%= link_to user_path(posts.user_id) do %>
@@ -68,6 +69,7 @@
             <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
               <%= link_to "コメントする", post_path(posts.id),class: "btn btn-sm btn-outline-info" %>
         </div>
+          <% end %>
       </div>
     </div>
     <% end %>
