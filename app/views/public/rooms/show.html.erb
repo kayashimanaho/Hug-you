@@ -1,7 +1,7 @@
-<div class ="container">
-  <div class="title text-center mt-3">
-    <h5><%= ("#{@another_entry.user.nick_name}さんとのメッセージ") %></h5>
-  </div>
+<div class ="container mt-3">
+  <h5><div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+    <%= ("#{@another_entry.user.nick_name}さんとのメッセージ") %>
+  </div></h5>
   
     <% @messages.each do |m| %>
       <% if m.user_id == current_user.id %>
