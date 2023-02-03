@@ -1,19 +1,20 @@
   <div class ="container mt-3">
-    <h5><%= @user.nick_name %></h5>
-   
-      <div class="card shadow-lg" style="width: 18rem;">
-  <%= image_tag @user.get_profile_image(100,100), class: "mx-auto d-block w-50" %><br>
+    <div class="h4 pb-2 mb-4 border-bottom border-danger">
+      <%= @user.nick_name %>
+    </div>
+    <div class="card shadow-lg" style="width: 18rem;">
+      <%= image_tag @user.get_profile_image(100,100), class: "mx-auto d-block w-50" %><br>
     <!--自分の編集画面-->
-    <% if @user == current_user %>
-    <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
-      <span><i class="fas fa-user-cog"></i></span>
-    <% end %><br>
-    <% end %>
-  <div class="card-body ">
-    <h5 class="card-title">自己紹介
+      <% if @user == current_user %>
+        <%= link_to information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
+        <span><i class="fas fa-user-cog"></i></span>
+      <% end %><br>
+      <% end %>
+      <div class="card-body ">
+        <h5 class="card-title">自己紹介
     <!--すでに部屋が存在しているかどうか分岐、
     していなければformでコントローラーにパラメーターに送る-->
-   <% unless @user.id == current_user.id %>
+     <% unless @user.id == current_user.id %>
      <% if @is_room == true %>
       <%= link_to 'メッセージへ', room_path(@room_id), class: "btn btn-outline-info" %>
      <% else %>

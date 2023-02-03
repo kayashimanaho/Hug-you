@@ -6,8 +6,13 @@ Rails.application.routes.draw do
 # URL /users/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: 'public/sessions',
+  omniauth_callbacks: "omniauth_callbacks"
 }
+# ライン
+# devise_for :users, controllers: {
+#   omniauth_callbacks: "omniauth_callbacks"
+# }
 
 # 管理者用
 # URL /admin/sign_in ...

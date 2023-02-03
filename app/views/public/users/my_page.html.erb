@@ -1,5 +1,5 @@
 <div class ="container mt-3">
-  <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
     <%= @user.name %>さんのマイページ
   </div>
     <div class ="row">
@@ -24,25 +24,39 @@
           <tr><th>自己紹介文</th><td><%= @user.introduction %></td></tr>
         </table>
       </div>
-      <div class ="col-6">
+      
+      
+      <div class ="col-3">
         <div>今までの投稿履歴</div>
-          <table border="0" cellpadding="11" cellspacing="0" width="95%">
-            <thead>
-              <tr>
-                <th width="10%">投稿日時</th>
-                <th width="20%">投稿</th>
-             </tr>
-            </thead>
-            <tbody>
-              <% @posts.each do |post| %>
-              <tr>
-                <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-                <td><%= post.content %></td>
-              </tr>
+          <% @posts.each do |posts| %>
+       <div class="card shadow-lg mb-2 mt-3">
+        <small class="text-black-50">
+          <%= posts.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </small>
+        <div class="card-body1">
+          <!--card自体をリンクにしたい-->
+          <%= link_to post_path(posts.id) do %>
+          <h5 class="card-title">
+            <!--押したユーザーの投稿詳細に行きたい-->
+            <%= link_to user_path(posts.user_id) do %>
+            <span>
+              <% if posts.user.profile_image.attached? %>
+                <%= image_tag posts.user.profile_image, size: "50x50" %>
+              <% else %>
+                <%= image_tag "no_image.jpeg", size: "50x50" %>
               <% end %>
-            </tbody>
-          </table>
+              <%= posts.user.nick_name %>
+            </span>
+            <% end %>
+          </h5>
+            <p class="card-text"><%= posts.content.truncate(20) %></p>
+            <p><%= link_to "#{posts.comments.count} 件", post_path(posts.id) %>
+            <i class="fa-regular fa-comment"></i>
+              <%= link_to "コメント", post_path(posts.id) %>
+              </p>
+        </div>
+          <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

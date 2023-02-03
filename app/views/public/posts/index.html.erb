@@ -1,6 +1,9 @@
+<div class ="flash">
+  <%= flash[:notice] %>
+</div>
 <div class ="container">
   <div class="cover-user-index">
-  <%= flash[:notice] %>
+  
   <div class ="row">
     <div class ="col-9 mt-4">
       <div class="title">
@@ -31,7 +34,7 @@
     <div class ="col-3">
       <div class="card border-dark mb-3" style="max-width: 18rem;">
         <div class="card-header"><i class="fa-solid fa-check"></i>いいね!ランキング</div>
-          <div class="card-body1 text-dark">
+          <div class="card-body text-dark">
             <h6 class="card-title">みんなのいいね TOP10</h6>
             <p class="card-text">
               <% @user_favorites.each.with_index(1) do |user, i| %>
