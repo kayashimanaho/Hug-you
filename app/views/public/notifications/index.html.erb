@@ -5,6 +5,8 @@
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
       <%= render notifications %>
+      <!--何日前とかの記述-->
+      <%#= time_ago_in_words(@posts.created_at)+ "前" %>
     <% else %>
       <p>通知はございません</p>
     <% end %>

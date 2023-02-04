@@ -25,7 +25,7 @@ devise_for :users,skip: [:passwords], controllers: {
       get "/about" => "homes#about", as: "about"
       get "/privacy" => "homes#privacy", as: "privacy"
       resources :contacts, only: [:new, :create]
-      resources :items, only:[:index, :show]
+      resources :items, only:[:new, :index, :show, :create, :edit, :update]
       resources :users, only: [:index, :create, :show] do
         collection do
           get 'my_page'
