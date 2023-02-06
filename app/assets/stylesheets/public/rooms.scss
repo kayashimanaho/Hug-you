@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .current_user {
-    color: #fff;
+    color: black;
     text-align: right;
-    background-color: #CC66CC;
+    background-color: #00CC00;
     width: fit-content;
     margin: 10px 0 0 auto;
     border-radius: 30px;
@@ -17,8 +17,10 @@
 }
 
 .current_user_1 {
-  text-align: right;
-  bottom: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: flex-end;
   
 }
 
@@ -27,9 +29,9 @@
 }
 
 .visited_user {
-    color: #fff;
+    color: black;
     margin: 10px;
-    background-color: #66CCFF;
+    background-color: #CCFFFF;
     text-align: left;
     width: fit-content;
     margin: 10px auto 0 0;

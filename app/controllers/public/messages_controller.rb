@@ -22,11 +22,11 @@ class Public::MessagesController < ApplicationController
             end
             notification.save if notification.valid?
             redirect_to room_path(message.room)
-        else
+      else
           redirect_back(fallback_location: root_path)
-        end
       end
     end
+  end
 
   private
 

@@ -15,6 +15,7 @@
         </div>
       <div class ="col-8">
         <table border="0" cellpadding="11" cellspacing="0" width="60%">
+          <tr><th>出品者</th><td><%#= @item.user.nick_name %></td></tr>
           <tr><th>商品名</th><td><%= @item.name %></td></tr>
           <tr><th>商品説明</th><td><%= @item.introduction %></td></tr>
           <tr><th>税込価格(税抜価格)</th><td> <%= (@item.add_tax_price.to_s(:delimited)) %>
@@ -32,7 +33,7 @@
      <!--% if @item.user == current_user %>-->
        <%= link_to "編集する", edit_item_path(@item.id),class: "btn btn-outline-success" %>
      <!--% else %>-->
-       <%= f.submit "カートに入れる",class: "btn btn-outline-success" %>
+       <%= f.submit "商品を購入する",class: "btn btn-outline-success" %>
      <!--% end %>-->
    <% end %>
      </div>

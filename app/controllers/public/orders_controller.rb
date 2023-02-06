@@ -15,9 +15,9 @@ class Public::OrdersController < ApplicationController
     @address = current_user
   
     if params[:address_option] == "0"
-      @order.postal_code = current_cuser.postal_code
+      @order.postal_code = current_user.postal_code
       @order.address = current_user.address
-      @order.name = current_user.full_name
+      @order.name = current_user.name
   	elsif params[:address_option] == "1"
   	  @address_id = params[:address_id].to_i
   	  @order_address = Address.find(@address_id)
