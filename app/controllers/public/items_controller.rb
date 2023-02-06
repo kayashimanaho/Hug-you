@@ -6,7 +6,7 @@ class Public::ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.all.page(params[:page]).per(8)
+    @items = Item.all.order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def create
@@ -25,9 +25,9 @@ class Public::ItemsController < ApplicationController
   end
 
   def update
-     @item = Item.find(params[:id])
-     @item.update(item_params)
-     redirect_to item_path(@item.id)
+     item = Item.find(params[:id])
+     item.update(item_params)
+     redirect_to item_path(item.id)
      
   end
   

@@ -58,9 +58,9 @@ devise_for :users,skip: [:passwords], controllers: {
         end
       end
         
-      end
       
       resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+      end
    
    
    namespace :admin do

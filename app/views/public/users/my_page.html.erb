@@ -12,6 +12,10 @@
           <%= link_to rooms_path,class: 'btn btn-outline-info' do %>
             <span>メッセージ一覧</span>
           <% end %>
+          <%= link_to "カート",cart_items_path,class: "btn btn-outline-info" %>
+          <%= link_to "注文履歴",orders_path,class: "btn btn-outline-info" %>
+          <%= link_to "配送先",addresses_path,class: "btn btn-outline-info" %>
+               
         </div>
         <table border="3" cellpadding="7" cellspacing="0" width="60%">
           <tr><th>氏名</th><td><%= @user.name %></td></tr>
