@@ -1,13 +1,16 @@
 class Public::UsersController < ApplicationController
   def my_page
     @user = current_user
-    @users = User.all
-    @posts = @user.posts.all
+    @users = User.order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc)
     @comments = Comment.all
+    @items = current_user.items
   end
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.order(created_at: :desc)
+    @items = @user.items.order(created_at: :desc)
     # ログインしてるユーザーとメッセージ相手のユーザー情報をEntryテーブルから検索
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)

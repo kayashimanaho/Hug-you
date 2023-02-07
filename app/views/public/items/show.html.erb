@@ -2,7 +2,7 @@
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
     商品の詳細
   </div>
-  <%= form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
+  <%#= form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
     <div class ="row">
       <div class ="col-4">
         <% if @item.image.attached? %>
@@ -15,7 +15,7 @@
         </div>
       <div class ="col-8">
         <table border="0" cellpadding="11" cellspacing="0" width="60%">
-          <tr><th>出品者</th><td><%#= @item.user.nick_name %></td></tr>
+          <tr><th>出品者</th><td><%= @item.user.nick_name %></td></tr>
           <tr><th>商品名</th><td><%= @item.name %></td></tr>
           <tr><th>商品説明</th><td><%= @item.introduction %></td></tr>
           <tr><th>税込価格(税抜価格)</th><td> <%= (@item.add_tax_price.to_s(:delimited)) %>
@@ -30,11 +30,14 @@
     </div>
 </div>
    <div class="d-flex align-items-center justify-content-center">
-     <!--% if @item.user == current_user %>-->
+     <% if @user == current_user %>
+        <%= link_to "編集する", information_edit_users_path(@user.id),class: 'btn btn-outline-secondary' do %>
+        <span><i class="fas fa-user-cog"></i></span>
+      <% end %><br>
        <%= link_to "編集する", edit_item_path(@item.id),class: "btn btn-outline-success" %>
-     <!--% else %>-->
-       <%= f.submit "商品を購入する",class: "btn btn-outline-success" %>
-     <!--% end %>-->
-   <% end %>
+     <% else %>
+       <%= link_to "購入の手続きへ", new_order_path, class: "btn btn-outline-info" %>
+     <% end %>
+   <!--% end %>-->
      </div>
    </div>

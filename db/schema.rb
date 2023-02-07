@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2023_02_03_141237) do
 
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "user_id", null: false
     t.string "image"
     t.text "introduction", null: false
     t.integer "price", null: false

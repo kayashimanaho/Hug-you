@@ -2,7 +2,9 @@
     <div class="h4 pb-2 mb-4 border-bottom border-danger">
       <%= @user.nick_name %>
     </div>
-    <div class="card shadow-lg" style="width: 18rem;">
+    <div class="row">
+    <div class="col-4">
+    <div class="card shadow-lg" style="width: 15rem;">
       <%= image_tag @user.get_profile_image(100,100), class: "mx-auto d-block w-50" %><br>
     <!--自分の編集画面-->
       <% if @user == current_user %>
@@ -34,4 +36,59 @@
     <li class="list-group-item">居住地 : <%= @user.from %></li>
     <li class="list-group-item">年齢 : <%= @user.age %>歳</li>
   </ul>
-</div></div>
+</div>
+</div>
+
+<div class ="col-4">
+        <div>今までの投稿履歴</div>
+          <% @posts.each do |posts| %>
+            <div class="card shadow-lg mb-2 mt-3">
+              <small class="text-black-50">
+                <%= posts.created_at.strftime('%Y/%m/%d %H:%M') %>
+              </small>
+              <div class="card-body1">
+              <!--card自体をリンクにしたい-->
+              <%= link_to post_path(posts.id) do %>
+              <h5 class="card-title">
+                <!--押したユーザーの投稿詳細に行きたい-->
+                <%= link_to user_path(posts.user_id) do %>
+              <span>
+                <% if posts.user.profile_image.attached? %>
+                  <%= image_tag posts.user.profile_image, size: "50x50" %>
+                <% else %>
+                  <%= image_tag "no_image.jpeg", size: "50x50" %>
+                <% end %>
+                  <%= posts.user.nick_name %>
+              </span>
+              <% end %>
+              </h5>
+                <p class="card-text"><%= posts.content.truncate(20) %></p>
+                <p><%= link_to "#{posts.comments.count} 件", post_path(posts.id) %>
+                <i class="fa-regular fa-comment"></i>
+                  <%= link_to "コメント", post_path(posts.id) %>
+                </p>
+              </div>
+          <% end %>
+            </div>
+          <% end %>
+      </div>
+      <div class="col-4">
+    <div>今までの出品履歴</div>
+  <% @items.each do |item| %>
+      <div class="card shadow-lg mb-2 mt-3 ml-3">
+        <%= link_to item_path(item.id) do %>
+        <% if item.image.attached? %>
+          <%= image_tag item.image ,size: "200x150" %>
+        <% else %>
+          <%= image_tag "noimage.png",size: "200x150" %>
+        <% end %>
+        <div class="card-body">
+          <p class="card-text"><%= item.name %></p>
+          <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+  
+  </div>
+</div>

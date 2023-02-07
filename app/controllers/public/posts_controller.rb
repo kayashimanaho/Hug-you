@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
    before_action :authenticate_user!, only: [:show, :create]
   def index
     #キーワード検索と新着投稿順
-    @posts = Post.search(params[:search]).order(created_at: :desc).page(params[:page]).per(8)
+    @posts = Post.search(params[:search]).order(created_at: :desc).page(params[:page]).per(12)
     
     @post = Post.new
     #いいねランキング

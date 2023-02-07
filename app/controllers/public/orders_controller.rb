@@ -14,21 +14,21 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_user.cart_items.all
     @address = current_user
   
-    if params[:address_option] == "0"
+  if params[:address_option] == "0"
       @order.postal_code = current_user.postal_code
       @order.address = current_user.address
       @order.name = current_user.name
-  	elsif params[:address_option] == "1"
+  elsif params[:address_option] == "1"
   	  @address_id = params[:address_id].to_i
   	  @order_address = Address.find(@address_id)
   	  @order.postal_code = @order_address.postal_code
   	  @order.address = @order_address.address
   	  @order.name = @order_address.name
-  	elsif params[:address_option] == "2"
+  elsif params[:address_option] == "2"
   	  @order.postal_code = params[:order][:postal_code]
   	  @order.address = params[:order][:address]
   	  @order.name = params[:order][:name]
-  	end
+  end
   	@order.total_payment = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 

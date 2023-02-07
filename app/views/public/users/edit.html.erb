@@ -6,7 +6,7 @@
         <tr><th>プロフィール画像</th><td><%= f.file_field :profile_image, accept: "image/*" %></td></tr>
         <tr><th>氏名</th><td><%= f.text_field :name, autofocus: true, id:"inputName" %></td></tr>
         <tr><th>メールアドレス</th><td><%= f.text_field :email, autofocus: true, id:"inputEmail" %></td></tr>
-        <tr><th>ニックネーム</th><td><%= f.text_field :nick_name, autofocus: true, id:"inputNick_Name" %></td></tr>
+        <tr><th>ニックネーム</th><td><%= f.text_field :nick_name, autofocus: true, id:"inputNick_Name" %>　※ニックネーム（表示されます）</td></tr>
         <tr><th>郵便番号</th><td><%= f.text_field :postal_code, autofocus: true, id:"inputPostal_code" %></td></tr>
         <tr><th>住所</th><td><%= f.text_field :address, autofocus: true, id:"address",size: 50 %></td></tr>
         <tr><th>居住地</th><td><%= f.text_field :from, autofocus: true, id:"inputFrom" %></td></tr>

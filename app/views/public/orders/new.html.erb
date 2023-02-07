@@ -1,6 +1,6 @@
 <div class ="container mt-3">
 <div class="h4 pb-2 mb-4 border-bottom border-danger">
-    配送先登録/一覧
+    注文情報入力
   </div>
   <%= form_with url: comfirm_orders_path,model: @order do |f| %>
     <strong>支払方法</strong><br>
@@ -12,11 +12,11 @@
       <%= current_user.address %><br>
       
       <%= radio_button_tag :address_option, "1" %>
-     <%= label_tag :address_option, '登録済み住所から選択', value: 1 %><br>
-     <%#= select_tag :address_id, options_from_collection_for_select(current_user.addresses, :id, :address_display) %><br>
-      <%#= f.collection_select :order_address , current_customer.addresses, :id, :address , :include_blank => "選択してください" %>
+      <%= label_tag :address_option, '登録済み住所から選択', value: 1 %><br>
+      <%= select_tag :address_id, options_from_collection_for_select(current_user.addresses, :id, :address_display) %><br>
+      <%#= f.collection_select :order_address , current_user.addresses, :id, :address , :include_blank => "選択してください" %>
       
-    <%= radio_button_tag :address_option, "2" %>
+     <%= radio_button_tag :address_option, "2" %>
      <%= label_tag :address_option, '新しいお届け先', value: 2 %><br>
      <table border="0" cellpadding="11" cellspacing="0" width="60%">
       <tr><th>郵便番号(ハイフンなし)</th><td>
