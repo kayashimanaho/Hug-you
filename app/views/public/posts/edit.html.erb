@@ -1,8 +1,10 @@
 <div class ="container mt-3">
-  <h5>投稿の編集</h5>
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
+    投稿の編集
+  </div>
   <%= form_with model: @post, url: post_path,method: :patch do |f| %>
     <table border="0" cellpadding="7" cellspacing="0" width="60%">
-      <tr><th>投稿内容</th><td><%= f.text_area :content, autofocus: true, id:"inputPostsContent" %></td></tr>
+      <tr><th>投稿内容</th><td><%= f.text_area :content, autofocus: true, id:"inputPostsContent", :size=>"50x8"%></td></tr>
       <tr><th></th><td><%= f.submit "変更を保存", class: "btn btn-success" %></td></tr>
     </table>
   <% end %>

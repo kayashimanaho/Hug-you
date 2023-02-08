@@ -10,7 +10,7 @@
       <div class="card shadow-lg">
           <div class="card-body">
             <h5 class="card-title">
-              <%= link_to user_path(@post.user.id),class: "btn btn-info" do %>
+              <%= link_to user_path(@post.user.id),class: "btn btn-outline-info" do %>
               <span>
                 <% if @post.user.profile_image.attached? %>
                   <%= image_tag @post.user.profile_image, size: "50x50" %>

@@ -9,6 +9,7 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = posts.id
     comment.save
+    flash[:notice] = "コメントの投稿にに成功しました"
     redirect_to post_path(posts)
   end
   
@@ -28,6 +29,7 @@ class Public::CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     comment = Comment.find(params[:id])    
     comment.destroy
+    flash[:notice] = "コメントの削除に成功しました"
     redirect_to  post_path(post.id)
   end
   
