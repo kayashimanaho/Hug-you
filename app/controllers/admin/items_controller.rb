@@ -1,10 +1,4 @@
-class Public::ItemsController < ApplicationController
-   before_action :authenticate_user!, except: [:index]
-
-  def new
-    @item = Item.new
-  end
-
+class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all.order(created_at: :desc).page(params[:page]).per(10)
   end

@@ -19,7 +19,7 @@ devise_for :users,skip: [:passwords], controllers: {
  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    sessions: "admin/sessions"
  }
- 
+
  scope module: :public do
       root to:"homes#top"
       get "/about" => "homes#about", as: "about"
@@ -31,8 +31,8 @@ devise_for :users,skip: [:passwords], controllers: {
           get 'my_page'
           get 'information/edit', action: :edit
           patch 'information',action: :update
-          get 'unsubscribe' 
-          patch 'withdraw' 
+          get 'unsubscribe'
+          patch 'withdraw'
       end
     end
         #メッセージ通知
@@ -40,7 +40,7 @@ devise_for :users,skip: [:passwords], controllers: {
         # メッセージ機能
         resources :messages, only: [:create, :index]
         resources :rooms, only: [:create, :index, :show]
-      
+
       resources :posts, only: [:index, :show, :edit, :update, :create, :destroy] do
         resources :comments, only: [:edit, :update, :create, :destroy]
         resource :favorites, only: [:create, :destroy]
@@ -57,18 +57,19 @@ devise_for :users,skip: [:passwords], controllers: {
           get 'complete'
         end
       end
-        
-      
+
+
       resources :addresses, only:[:index, :edit, :create, :update, :destroy]
       end
-   
-   
+
+
    namespace :admin do
     root to:"homes#top"
     resources :order_details,only:[:update]
     resources :orders, only:[:show, :index, :update]
     resources :users, only:[:show, :edit, :update]
     resources :posts,only:[:index, :show, :edit, :update, :destroy]
+    resources :items,only:[:index, :show, :edit, :update, :destroy]
     resources :comments,only:[:index, :show, :edit, :update, :destroy]
     resources :keywords,only:[:index, :show, :edit, :update, :destroy]
   end

@@ -1,5 +1,7 @@
-<div class ="container">
-  <h5><%= @user.name %>さんの個人情報編集</h5>
+<div class ="container mt-3">
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
+      <%= @user.name %>さんの情報編集
+  </div>
     <%= form_with model: @user, url: information_users_path do |f| %>
     <%= image_tag @user.get_profile_image(100,100) %>
       <table border="0" cellpadding="7" cellspacing="0" width="60%">

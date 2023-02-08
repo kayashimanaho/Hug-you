@@ -1,0 +1,27 @@
+<div class ="container mt-3">
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
+    管理者出品一覧
+  </div>
+    <table border="0" cellpadding="11" cellspacing="0" width="95%">
+        <thead>
+          <tr>
+            <th width="10%">氏名</th>
+            <th width="15%">ニックネーム</th>
+            <th width="20%">出品日時</th>
+            <th width="20%">出品詳細へ</th>
+         </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.user.name %></td>
+          <td><%= item.user.nick_name %></td>
+          <td><%= item.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td><%= link_to item.name.truncate(10),admin_item_path(item.id) %></td>
+        <% end %>
+      </tbody>
+      </table>
+      <div class="d-flex align-items-center justify-content-center">
+        <%= paginate @items %>
+      </div>
+  </div>
