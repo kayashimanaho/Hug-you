@@ -29,9 +29,11 @@
             <!--DMが来たら通知してくれる記述-->
             <li class ="nav-item">
              <% if unchecked_notifications.any? %>
-               <%= link_to "通知", notifications_path , class: "nav-link notice-active" %>
+              <div class="nav-link1">
+                <%= link_to "通知", notifications_path , class: "nav-link text-dark notice-active" %>
+              </div>
              <% else %>
-               <%= link_to "通知", notifications_path , class: "nav-link" %>
+               <%= link_to "通知", notifications_path , class: "nav-link text-dark" %>
              <% end %>
             </li>
             <li class="nav-item">

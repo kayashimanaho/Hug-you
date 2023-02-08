@@ -6,8 +6,8 @@
     <% @items.each do |item| %>
       <div class="card shadow-lg mb-2 mt-3 ml-3">
         <%= link_to item_path(item.id) do %>
-        <% if item.image.attached? %>
-          <%= image_tag item.image ,size: "200x150" %>
+        <% if item.images.attached? %>
+          <%= image_tag item.images[0],size: "200x150" %>
         <% else %>
           <%= image_tag "noimage.png",size: "200x150" %>
         <% end %>

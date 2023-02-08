@@ -11,13 +11,14 @@ class Public::ItemsController < ApplicationController
   
   def create
      item = Item.new(item_params)
+     item.user = current_user
      item.save!
     redirect_to item_path(item.id)
   end
 
   def show
     @item = Item.find(params[:id])
-    @cart_item = CartItem.new
+    @user = current_user
   end
   
   def edit
@@ -34,6 +35,6 @@ class Public::ItemsController < ApplicationController
    private
    
    def item_params
-     params.require(:item).permit(:user_id, :name,:introduction,:price,:is_active, :image)
+     params.require(:item).permit(:name,:introduction, :status, :price,:is_active, images: []) #画像を複数枚選択する記述
    end
 end

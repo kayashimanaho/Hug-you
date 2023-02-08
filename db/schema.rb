@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2023_02_03_141237) do
 
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
+    t.string "status", null: false
     t.integer "user_id", null: false
     t.string "image"
     t.text "introduction", null: false
@@ -132,7 +133,7 @@ ActiveRecord::Schema.define(version: 2023_02_03_141237) do
     t.integer "room_id"
     t.integer "message_id"
     t.string "action"
-    t.boolean "checked"
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
