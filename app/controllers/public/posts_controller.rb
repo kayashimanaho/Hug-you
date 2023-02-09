@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
   def index
     #キーワード検索と新着投稿順
     @posts = Post.search(params[:search]).order(created_at: :desc).page(params[:page]).per(12)
-    
+
     @post = Post.new
     #いいねランキング
     @user_favorites = User
@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
       .having("users.is_deleted = false")
       .order("count(favorites.id) DESC")
       .limit(10)
-    
+
   end
 
   def show
@@ -22,12 +22,15 @@ class Public::PostsController < ApplicationController
     # @user = User.find(params[:id])
     @comments = @post.comments #投稿ごとにコメントを分ける
   end
-  
+
   def edit
     @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path, notice: '他人の投稿は編集できません'
+    end
   end
-  
-  
+
+
 
   def create
     post = Post.new(post_params)
@@ -41,7 +44,7 @@ class Public::PostsController < ApplicationController
       render :index
     end
   end
-  
+
   def update
     post = Post.find(params[:id])
     if post.update(post_params)
@@ -51,12 +54,12 @@ class Public::PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path
-   
+
   end
 
 
@@ -64,5 +67,5 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:content)
   end
-  
+
 end

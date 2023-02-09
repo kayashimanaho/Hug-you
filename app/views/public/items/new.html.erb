@@ -1,4 +1,12 @@
 <div class ="container mt-3">
+  <% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
     新規出品
   </div>

@@ -12,17 +12,22 @@ class Public::ItemsController < ApplicationController
   def create
      item = Item.new(item_params)
      item.user = current_user
-     item.save!
+     item.save
     redirect_to item_path(item.id)
   end
 
   def show
     @item = Item.find(params[:id])
-    # @user = @item.user.id
+
   end
 
   def edit
+    #  ログインしている人が投稿したアイテムの中から指定のidのものを返す
      @item = Item.find(params[:id])
+    # 他人の商品を編集できないようにする記述
+     unless @item.user == current_user
+      redirect_to posts_path, notice: '他人の商品は編集できません'
+     end
   end
 
   def update
@@ -31,12 +36,12 @@ class Public::ItemsController < ApplicationController
      redirect_to item_path(item.id)
 
   end
-  
+
   def destroy
     item = Item.find(params[:id])
     item.destroy
     redirect_to items_path
-   
+
   end
 
    private

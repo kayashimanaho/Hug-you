@@ -53,7 +53,7 @@ devise_for :users,skip: [:passwords], controllers: {
       end
       resources :orders, only:[:new, :create, :index, :show] do
         collection do
-          post 'comfirm'
+          post 'confirm'
           get 'complete'
         end
       end

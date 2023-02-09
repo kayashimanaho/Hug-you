@@ -35,10 +35,11 @@
       </div>
 </div>
    <div class="d-flex align-items-center justify-content-center">
-     <!--% if @user == current_user %>-->
+     <!--投稿した人だけ編集画面を出す-->
+     <% if @item.user == current_user %>
         <%= link_to "編集する", edit_item_path(@item.id),class: 'btn btn-outline-secondary' %>
-     <!--% else %>-->
+     <% else %>
        <%= link_to "購入の手続きへ", new_order_path(@item.id), class: "btn btn-outline-info" %>
-     <!--% end %>-->
+     <% end %>
     </div>
 </div>
