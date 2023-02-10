@@ -2,10 +2,10 @@
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
     商品の詳細
   </div>
-  <%#= form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
+  <!--orderでいいのかカート機能はいらない気がするが購入の手続きを押すとエラー-->
+  <%= form_with model: @order,url: orders_path,method: :post do |f| %>
     <div class ="row">
       <div class ="col-7">
-        <!--写真を複数枚選択　shift＋クリック-->
         <% @item.images.each do |image|%>
           <%= image_tag image, size: "200x200" %>
         <% end %>
@@ -36,10 +36,15 @@
 </div>
    <div class="d-flex align-items-center justify-content-center">
      <!--投稿した人だけ編集画面を出す-->
+     <!--出品した人とログインしている人が同じ時編集画面-->
      <% if @item.user == current_user %>
-        <%= link_to "編集する", edit_item_path(@item.id),class: 'btn btn-outline-secondary' %>
+       <div class ="mr-3">
+         <%= link_to "編集する", edit_item_path(@item.id),class: 'btn btn-outline-secondary' %>
+       </div>
+         <%= link_to "削除",  item_path(@item.id), class:' btn btn-outline-danger',method: :delete %>
      <% else %>
-       <%= link_to "購入の手続きへ", new_order_path(@item.id), class: "btn btn-outline-info" %>
+       <%= f.submit "購入の手続きへ", class: "btn btn-outline-info" %>
+     <% end %>
      <% end %>
     </div>
 </div>

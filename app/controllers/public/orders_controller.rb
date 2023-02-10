@@ -1,8 +1,6 @@
 class Public::OrdersController < ApplicationController
    def new
     @order = Order.new
-    @address = current_user.address
-    @addresses = current_user.addresses
    end
 
   def confirm
@@ -11,7 +9,7 @@ class Public::OrdersController < ApplicationController
     @orders = Order.all
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    # @cart_items = current_user.cart_items.all
+    @orders = current_user.orders
     @address = current_user
 
   if params[:address_option] == "0"

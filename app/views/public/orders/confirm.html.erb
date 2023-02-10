@@ -1,10 +1,10 @@
 <div class ="container mt-3">
 <div class="h4 pb-2 mb-4 border-bottom border-danger">
-    注文情報確認
-  </div>
-    <div class ="row">
-      <div class ="col-8">
-     <table border="1" cellpadding="11" cellspacing="0" width="100%">
+  注文情報確認
+</div>
+  <div class ="row">
+    <div class ="col-8">
+      <table border="1" cellpadding="11" cellspacing="0" width="100%">
         <thead style="background:lightgray">
           <tr>
             <th>出品者名</th>
@@ -15,31 +15,27 @@
           </tr>
         </thead>
 
-            <tbody style >
-              <% @orders.each do |order| %>
-              <tr>
-                <td><%= @item.user.nick_name %></td>
-                <td><%= image_tag order.item.get_image(60,40) %><%= order.item.name %></td>
-                <td><%= order.item.with_tax_price.to_s(:delimited) %></td>
-                <td><%= @shipping_cost %></td>
-                <td><%= (order.total_payment += @shipping_cost).to_s(:delimited) %></td>
-                
-               </tr>
-               <% end %>
-            </tbody>
-          </table>
-      </div>
-          
-     
+        <tbody style >
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= item.user.nick_name %></td>
+            <td><%= image_tag.order.item.get_image(60,40) %><%= order.item.name %></td>
+            <td><%= order.item.with_tax_price.to_s(:delimited) %></td>
+            <td><%= @shipping_cost %></td>
+            <td><%= (order.total_payment += @shipping_cost).to_s(:delimited) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    
-    <strong>支払方法</strong><br>
+  </div>
+  <strong>支払方法</strong><br>
     <%= @order.payment_method_i18n %><br>
      
-    <strong>お届け先</strong><br>
-      <%= @order.postal_code %>
-      <%= @order.address %><br>
-      <%= @order.name %>
+  <strong>お届け先</strong><br>
+    <%= @order.postal_code %>
+    <%= @order.address %><br>
+    <%= @order.name %>
   <div class ="container text-center">
     <%= form_with model: @order,url:  orders_path,method: :post do |f| %>
     <%= f.hidden_field :name,:value => @order.name %>

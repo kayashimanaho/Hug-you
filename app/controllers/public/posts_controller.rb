@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     # @user = User.find(params[:id])
-    @comments = @post.comments #投稿ごとにコメントを分ける
+    @comments = @post.comments.order(created_at: :desc) #投稿ごとにコメントを分ける
   end
 
   def edit
@@ -29,7 +29,6 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path, notice: '他人の投稿は編集できません'
     end
   end
-
 
 
   def create

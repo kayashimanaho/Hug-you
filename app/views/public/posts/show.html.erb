@@ -32,45 +32,45 @@
               <div class="card-text"><%= simple_format(@post.content) %></div>
                 <% if @post.favorited_by?(current_user) %>
               <p>
-                  <%= link_to post_favorites_path(@post), method: :delete do %>
-                  <i class="fa-solid fa-heart"></i> <%= @post.favorites.count %>
-                  <% end %>
+                <%= link_to post_favorites_path(@post), method: :delete do %>
+                <i class="fa-solid fa-heart"></i> <%= @post.favorites.count %>
+                <% end %>
               </p>
                 <% else %>
               <p>
-                  <%= link_to post_favorites_path(@post), method: :post do %>
-                  ♡ <%= @post.favorites.count %>
-                  <% end %>
+                <%= link_to post_favorites_path(@post), method: :post do %>
+                ♡ <%= @post.favorites.count %>
+                <% end %>
               </p>
                 <% end %>
           </div>
             <p>コメント件数：<%= @comments.count %></p>
-            
+
         </div>
       </div>
-        <div class ="mt-2">
-          <%= form_with model: [@post, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く",size: "50%" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-    <div class ="ml-5 mt-2">
-      <% @comments.each do |comment| %>
-        <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-          <%= comment.user.nick_name %>
-          <small class="text-black-50">
-            <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M') %>
-          </small>
-          <%= simple_format(comment.comment) %>
-          <!--自分のコメントしか削除できない-->
-          <% if comment.user == current_user %>
-            <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete %>
-          <% end %>
-          <!--自分のコメントしか編集できない記述-->
-          <% if comment.user == current_user %>
-          <%= link_to "編集する", edit_post_comment_path(comment.id) %>
-          <% end %>
-      <% end %>
+      <div class ="mt-2">
+        <%= form_with model: [@post, @comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く",size: "50%" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      <div class ="ml-5 mt-2">
+        <% @comments.each do |comment| %>
+          <p><%#= image_tag comment.user.get_profile_image(20,20) %></p>
+            <%= comment.user.nick_name %>
+            <small class="text-black-50">
+              <%= comment.user.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </small>
+            <%= simple_format(comment.comment) %>
+            <!--自分のコメントしか削除できない-->
+            <% if comment.user == current_user %>
+              <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete %>
+            <% end %>
+            <!--自分のコメントしか編集できない記述-->
+            <% if comment.user == current_user %>
+            <%= link_to "編集", edit_post_comment_path(comment.id) %>
+            <% end %>
+        <% end %>
+      </div>
     </div>
-        </div>
-    </div>
+  </div>
 </duv>
