@@ -61,3 +61,4 @@ gem 'dotenv-rails'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem "enum_help"
+gem 'jquery-rails'

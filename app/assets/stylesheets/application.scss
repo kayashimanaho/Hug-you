@@ -14,6 +14,9 @@
  *= require_self
  */
 
+
+// @import "bootstrap";
+
 body {
   // ref: https://coliss.com/articles/build-websites/operation/css/css-responsive-full-background-image-by-sixrevisions.html
   background: image-url("bg6.jpg") center center / cover no-repeat fixed;
@@ -23,12 +26,12 @@ body {
 
 header {
   // background: image-url("hd3.jpg");
-  background-size: cover; 
+  background-size: cover;
 }
 
 footer {
   background: image-url("ft5.jpg");
-  background-size: cover; 
+  background-size: cover;
 }
 
 
@@ -38,12 +41,12 @@ footer {
 
 .link {
     text-decoration: none;
-    color: #df744a ; 
+    color: #df744a ;
 }
 
 .sns {
  margin-left: auto;
- color: #df744a ; 
+ color: #df744a ;
 
 }
 

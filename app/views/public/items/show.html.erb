@@ -3,7 +3,7 @@
     商品の詳細
   </div>
   <!--orderでいいのかカート機能はいらない気がするが購入の手続きを押すとエラー-->
-  <%= form_with model: @order,url: orders_path,method: :post do |f| %>
+  <%#= form_with model: @order,url: orders_path,method: :post do |f| %>
     <div class ="row">
       <div class ="col-7">
         <% @item.images.each do |image|%>
@@ -43,8 +43,9 @@
        </div>
          <%= link_to "削除",  item_path(@item.id), class:' btn btn-outline-danger',method: :delete %>
      <% else %>
-       <%= f.submit "購入の手続きへ", class: "btn btn-outline-info" %>
+       <%#= f.submit "購入の手続きへ", class: "btn btn-outline-info" %>
+       <%= link_to "購入の手続きへ", orders_path(item_id: @item.id), method: :post, class: "btn btn-outline-info" %>
      <% end %>
-     <% end %>
+     <%# end %>
     </div>
 </div>

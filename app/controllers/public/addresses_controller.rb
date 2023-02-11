@@ -7,15 +7,17 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
-   
-    @address = Address.find(params[:id])
+   @address = Address.find(params[:id])
+   unless @address.user == current_user
+      redirect_to posts_path, notice: '他人の配送先は編集できません'
+   end
   end
 
   def create
      @address = Address.new(address_params)
      @address.user_id = current_user.id
     @address.save
-    redirect_to addresses_path 
+    redirect_to addresses_path
   end
 
   def update
@@ -28,9 +30,9 @@ class Public::AddressesController < ApplicationController
      @addresses = Address.find(params[:id])
       @addresses.destroy
       redirect_to addresses_path
-    
+
   end
-  
+
   private
 
 def address_params
