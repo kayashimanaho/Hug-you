@@ -3,19 +3,19 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
    end
 
-  def comfirm
+  def confirm
     # @total = 0
     @shipping_cost = 800
 
     @order = Order.new(order_params)
-    @order.customer_id = current_user.id
+    @order.user_id = current_user.id
     @cart_items = current_user.cart_items.all
     @address = current_user
 
   if params[:address_option] == "0"
       @order.postal_code = current_user.postal_code
       @order.address = current_user.address
-      @order.name = current_user.full_name
+      @order.name = current_user.name
   elsif params[:address_option] == "1"
   	  @address_id = params[:address_id].to_i
   	  @order_address = Address.find(@address_id)
@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
   	  @order.address = params[:order][:address]
   	  @order.name = params[:order][:name]
   end
-  	@order.total_payment = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+  	@order.total_payment = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.item.with_tax_price }
   end
 
   def complete
@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
   def create
     @cart_items = current_user.cart_items
     @order = Order.new(order_params)
-    @order.total_payment = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @order.total_payment = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.item.with_tax_price }
     @shipping_cost = 800
     @order.status = 0
     @order.save!
@@ -45,7 +45,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.price = cart_item.item.with_tax_price
-      @order_detail.amount = cart_item.amount
+      # @order_detail.amount = cart_item.amount
       @order_detail.making_status = 0
       @order_detail.save!
     current_user.cart_items.destroy_all

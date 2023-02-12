@@ -3,14 +3,13 @@
     商品の詳細
   </div>
     <div class ="row">
-      <div class ="col-7">
+      <div class ="col-12">
         <% @item.images.each do |image|%>
           <%= image_tag image, size: "200x200" %>
         <% end %>
         <% if @item.images.length == 0 %>
           <%= image_tag 'noimage.png', size: "200x200" %>
         <% end %>
-
       </div>
     </div>
     <div class="row">
@@ -33,13 +32,15 @@
         </div>
           <%= link_to "削除",  item_path(@item.id), class:' btn btn-outline-danger',method: :delete %>
            <%# 未購入品でない場合には、売り切れを表示 %>
-      <!--% elsif @item.present? %>-->
-        <%#= link_to "売り切れました",item_path(@item),class:"disabled-button bold" %>
+      <% elsif @item.order_details.present? %>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
       <% else %>
           <%# 出品者以外かつ未購入品であれば、購入画面を表示 %>
-  <%= form_with model: CartItem.new,url: cart_items_path,method: :post do |f| %>
-  <%= f.hidden_field :item_id, value: @item.id %>
-          <%= f.submit "カートに入れる",class: "btn btn-outline-success" %>
+        <%= form_with model: CartItem.new,url: cart_items_path,method: :post do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.submit "カートに入れる",class: "btn btn-outline-success" %>
         <%#= link_to "購入の手続きへ", orders_path(item_id: @item.id), method: :post, class: "btn btn-outline-info" %>
       <% end %>
     <% end %>

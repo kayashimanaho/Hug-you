@@ -1,3 +1,28 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.sold-out {
+  color: red;
+}
+
+  .items-box_photo__sold{
+    width: 0;
+    height: 0;
+    border-top: 60px solid #ea352d ;
+    border-right: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-left: 60px solid #ea352d ;
+    z-index:100;
+    position: relative;
+    top:-320px;
+    &__inner{
+      transform: rotate(-45deg);
+      font-size: 28px;
+      margin:-35px 0px 0px -55px;
+      color: #fff;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+  }
