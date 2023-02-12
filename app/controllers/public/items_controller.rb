@@ -10,6 +10,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def create
+     @cart_item = CartItem.new
      item = Item.new(item_params)
      item.user = current_user
      item.save
@@ -18,7 +19,7 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-
+    @cart_item = CartItem.new
   end
 
   def edit

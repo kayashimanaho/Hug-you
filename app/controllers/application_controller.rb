@@ -11,9 +11,6 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def application
-    @user = current_user
-  end
 
   protected
 

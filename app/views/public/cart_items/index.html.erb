@@ -1,11 +1,9 @@
 <div class ="container mt-3">
 <div class="h4 pb-2 mb-4 border-bottom border-danger">
-    ショッピングカート
+    ショッピングカート仮購入商品
   </div>
   <div class="row">
-    <div class="col-8">
-      <h3><span style="background-color: silver;">ショッピングカート</span></h3>
-    </div>
+   
     <div class="col-4">
     <%= link_to "カートを空にする", destroy_all_cart_items_path,method: :delete, class: "btn btn-danger" %>
     </div>
@@ -15,8 +13,8 @@
    <tr>
     <th>商品名</th>
     <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
+
+
     <th></th>
    </tr>
   </thead>
@@ -24,18 +22,17 @@
   <tbody style >
     <% @cart_items.each do |cart_item| %>
     <tr>
-      <td><%= image_tag cart_item.item.get_image(60,40) %><%= cart_item.item.name %></td>
-      <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-      <%= form_with model: cart_item,url: cart_item_path(cart_item.id),method: :patch do |f| %>
       <td>
-        <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], :size =>"40",include_blank: cart_item.amount.to_s, class: 'form-control' %>
-        <%= f.submit "変更",class: "btn btn-success" %>
-      </td>
-      <% end %>
-     
-      <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+        <% cart_item.item.images. each do |image| %>
+          <%= image_tag image, size: "200x200" %>
+        <% end %>
+        <%= cart_item.item.name %></td>
+      <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+
+
+
       <td><%= link_to "削除する", cart_item_path(cart_item.id),class: "btn btn-danger", method: :delete %></td>
-      <% @total +=  cart_item.subtotal %>
+      <% @total +=  cart_item.item.with_tax_price %>
     </tr>
     <% end %>
   </tbody>
@@ -58,8 +55,8 @@
   <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success ml-4" %>
   <% end %>
 </div>
-  
-  
-  
-  
+
+
+
+
   </div>
