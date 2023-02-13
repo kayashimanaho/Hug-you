@@ -2,12 +2,17 @@ class Item < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :order_details, dependent: :destroy
   belongs_to :user
+  has_many :notifications, dependent: :destroy
   
 #  has_one_attached :image
   has_many_attached :images
   
+  # バリデーション
   validates :name, presence: true
   validates :images, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
+  validates :status, presence: true
    
    def add_tax_price
     (self.price * 1.10).round

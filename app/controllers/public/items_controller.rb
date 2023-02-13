@@ -14,7 +14,7 @@ class Public::ItemsController < ApplicationController
      item = Item.new(item_params)
      item.user = current_user
      item.save
-    redirect_to item_path(item.id)
+    redirect_to item_path(item.id), notice: '出品しました'
   end
 
   def show
@@ -42,8 +42,7 @@ class Public::ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy
     redirect_to items_path, notice: '商品が削除されました'
-
-  end
+ end
 
    private
 

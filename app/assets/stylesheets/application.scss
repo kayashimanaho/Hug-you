@@ -62,7 +62,7 @@ footer {
 }
 
 .nav-link1::after {
-  content: "！";
+  content: "◯";
   position: absolute;   /* 相対位置を指定 */
   top: -0px;           /* 表示位置を上から-10pxの位置にする */
   right: 0px;         /* 表示位置を右から-10pxの位置にする */

@@ -3,8 +3,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @users = User.order(created_at: :desc)
     @posts = @user.posts.order(created_at: :desc)
-    @comments = Comment.all
-    @items = current_user.items
+    @items = current_user.items.order(created_at: :desc)
   end
 
   def show

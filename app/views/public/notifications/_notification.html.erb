@@ -1,29 +1,26 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class ="card">
-<% if notification.checked == true %>
-<div class= "text-muted">
- <%= link_to user_path(visitor) do %>
-     <%= visitor.nick_name %>さん
- <% end %>
- <% if notification.action=='dm' %>
+  <div class ="card">
+  <% if notification.checked == true %>
+    <div class= "text-muted">
+      <%= link_to user_path(visitor) do %>
+        <%= visitor.nick_name %>さん
+      <% end %>
+  <% if notification.action=='dm' %>
     があなたにDMを送りました
- <% end %>
-</div>
-<% else %>
-<%# ←この1行が大事 %>
+  <% end %>
+    </div>
+  <% else %>
     <div>
-        <%= link_to user_path(visitor) do %>
-            <%= visitor.nick_name %>さん
-        <% end %>
-        <% if notification.action=='dm' %>
+      <%= link_to user_path(visitor) do %>
+        <%= visitor.nick_name %>さん
+      <% end %>
+      <% if notification.action=='dm' %>
         があなた(<%= visited.nick_name %>さん)にDMを送りました
-        <% end %>
+      <% end %>
         <%= link_to '既読にする',notification_path(notification.id),method: :put %>
     </div>
-    
-<% end %> <%# ←この1行が大事 %>
+  <% end %>
 </div>
 
 
-    

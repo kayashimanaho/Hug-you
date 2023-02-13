@@ -1,3 +1,6 @@
+<div class ="flash">
+  <%= flash[:notice] %>
+</div>
 <div class ="container mt-3">
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
     商品の詳細
@@ -18,6 +21,7 @@
           <tr><th>出品者</th><td><%= @item.user.nick_name %></td></tr>
           <tr><th>商品名</th><td><%= @item.name %></td></tr>
           <tr><th>商品説明</th><td><%= @item.introduction %></td></tr>
+          <tr><th>商品の状態</th><td><%= @item.status %></td></tr>
           <tr><th>税込価格(税抜価格)</th><td> <%= (@item.add_tax_price.to_s(:delimited)) %>
             (<%= (@item.price.to_s(:delimited)) %>円)</td></tr>
         </table>
@@ -30,7 +34,7 @@
         <div class ="mr-3">
           <%= link_to "編集する", edit_item_path(@item.id),class: 'btn btn-outline-secondary' %>
         </div>
-          <%= link_to "削除",  item_path(@item.id), class:' btn btn-outline-danger',method: :delete %>
+          <%= link_to "削除", item_path(@item.id), class: 'btn btn-outline-danger',method: :delete %>
            <%# 未購入品でない場合には、売り切れを表示 %>
       <% elsif @item.order_details.present? %>
         <div class='sold-out'>

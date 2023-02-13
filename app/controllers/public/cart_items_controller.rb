@@ -14,6 +14,7 @@ class Public::CartItemsController < ApplicationController
      @cart_item = CartItem.find(params[:id])
     if @cart_item.user_id == current_user.id
       @cart_item.destroy
+      redirect_to cart_items_path
     end
   end
 
@@ -23,14 +24,19 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.user_id = current_user.id
+    # ログインしているユーザの持っているカート内商品の中に今カートに入れようとしたitemのidを持ったカート商品があるかを確認なければ保存する
+    unless current_user.cart_items.exists?(item_id: params[:cart_item][:item_id])
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.user_id = current_user.id
 
-		if @cart_item.save
+  		if @cart_item.save
+  		  redirect_to cart_items_path
+  		else
+        render
+  		end
+  	else
 		  redirect_to cart_items_path
-		else
-      render
-		end
+	  end
   end
 
 
