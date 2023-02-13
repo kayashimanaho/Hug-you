@@ -1,6 +1,8 @@
- <div class ="container">
-   <h3><span style="background-color: pink;"><%= @user.name %>さんの会員情報編集</span></h3>
-     <%= form_with model: @user, url: admin_user_path do |f| %>
+ <div class ="container mt-3">
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
+    <%= @user.name %>さんの情報編集
+  </div>
+    <%= form_with model: @user, url: admin_user_path do |f| %>
       <table border="0" cellpadding="7" cellspacing="0" width="60%">
         <tr><th>会員ID</th><td><%= @user.id %></td></tr>
         <tr><th>氏名</th><td><%= f.text_field :name, autofocus: true, id:"inputName" %></td></tr>
@@ -20,7 +22,7 @@
         </td></tr>
       </table>
        
-        <%= f.submit "変更を保存", class: "btn btn-info" %>
+        <%= f.submit "変更を保存", class: "btn btn-outline-info" %>
        
       <% end %>
   </div>

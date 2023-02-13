@@ -1,11 +1,16 @@
 class Admin::OrdersController < ApplicationController
-  
+
+  def index
+    @orders = Order.page(params[:page]).per(9)
+    
+  end
+
   def show
     @total = 0
     @shipping_cost = 800
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    
+
   end
 
   def update
@@ -22,10 +27,10 @@ class Admin::OrdersController < ApplicationController
     end
     redirect_to admin_order_path(@order)
   end
-  
+
   private
 
-  def order_params 
+  def order_params
     params.require(:order).permit(:status)
   end
 end

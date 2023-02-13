@@ -4,6 +4,10 @@ class Order < ApplicationRecord
   has_many :items, dependent: :destroy
 
   has_one_attached :image
+  
+  def with_tax_price
+    (price * 1.1).floor
+   end
 
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: {

@@ -241,6 +241,8 @@ ja:
       new:
         sign_up: "アカウント登録"
     sessions:
+      admin:
+        signed_in: "ログイン成功しました"
       user:
         signed_in: "ログイン成功しました"
         signed_out: "ログアウトしました"
