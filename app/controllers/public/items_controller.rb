@@ -11,10 +11,13 @@ class Public::ItemsController < ApplicationController
 
   def create
     # @cart_item = CartItem.new
-     item = Item.new(item_params)
-     item.user = current_user
-     item.save
-    redirect_to item_path(item.id), notice: '出品しました'
+    @item = Item.new(item_params)
+    @item.user = current_user
+    if @item.save
+      redirect_to item_path(@item.id), notice: '出品しました'
+    else
+      render :new
+    end
   end
 
   def show

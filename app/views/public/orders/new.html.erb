@@ -1,4 +1,12 @@
 <div class ="container mt-3">
+  <% if @order.errors.any? %>
+  <%= @order.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
 <div class="h4 pb-2 mb-4 border-bottom border-danger">
     注文情報入力
   </div>

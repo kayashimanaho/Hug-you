@@ -28,7 +28,6 @@
         </table>
       </div>
 
-
       <div class ="col-3">
         <div>今までの投稿履歴</div>
           <% @posts.each do |posts| %>
@@ -63,27 +62,24 @@
           <% end %>
       </div>
 
-
-
-  <div class="col-4">
-    <div>今までの出品履歴</div>
-      <% @items.each do |item| %>
-      <div class="card shadow-lg mb-2 mt-3 ml-3">
-        <%= link_to item_path(item.id) do %>
-        <% if item.images.attached? %>
-        <!--複数枚の画像を一枚だけ表示する-->
-          <%= image_tag item.images[0] ,size: "200x150" %>
-        <% else %>
-          <%= image_tag "noimage.png",size: "200x150" %>
-        <% end %>
-        <div class="card-body">
-          <p class="card-text"><%= item.name %></p>
-          <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
+      <div class="col-2.5">
+        <div>今までの出品履歴</div>
+          <% @items.each do |item| %>
+          <div class="card shadow-lg mb-2 mt-3 ml-3">
+            <%= link_to item_path(item.id) do %>
+            <% if item.images.attached? %>
+            <!--複数枚の画像を一枚だけ表示する-->
+              <%= image_tag item.images[0] ,size: "200x150" %>
+            <% else %>
+              <%= image_tag "noimage.png",size: "200x150" %>
+            <% end %>
+            <div class="card-body">
+              <p class="card-text"><%= item.name %></p>
+              <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
+              <% end %>
+            </div>
+          </div>
           <% end %>
-        </div>
       </div>
-      <% end %>
-  </div>
-</div>
-
+    </div>
 </div>

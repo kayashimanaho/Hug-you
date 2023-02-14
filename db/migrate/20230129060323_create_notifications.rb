@@ -5,7 +5,7 @@ class CreateNotifications < ActiveRecord::Migration[6.1]
       t.integer :visited_id
       t.integer :room_id
       t.integer :message_id
-      t.integer :item_id, null: false
+      t.integer :order_id, null: false
       t.string :action
       t.boolean :checked, null: false, default: false
 

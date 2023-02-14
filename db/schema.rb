@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2023_02_03_141237) do
     t.integer "visited_id"
     t.integer "room_id"
     t.integer "message_id"
-    t.integer "item_id", null: false
+    t.integer "order_id", null: false
     t.string "action"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -149,7 +149,6 @@ ActiveRecord::Schema.define(version: 2023_02_03_141237) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "item_id", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "name", null: false

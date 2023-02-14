@@ -10,28 +10,31 @@
             <th>出品者名</th>
             <th>商品名</th>
             <th>単価（税込）</th>
-            <th>送料</th>
-            <th>支払金額</th>
           </tr>
         </thead>
 
         <tbody style >
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <td><%= cart_item.user.nick_name %></td>
+            <td><%= cart_item.item.user.nick_name %></td>
             <td>
               <% cart_item.item.images.each do |image| %>
               <%= image_tag image,size: "60x40" %>
               <% end %>
               <%= cart_item.item.name %></td>
             <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-            <td><%= @shipping_cost %></td>
-            <td><%= (@order.total_payment += @shipping_cost).to_s(:delimited) %>円</td>
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
+     <div class ="col-4">
+        <table border="1" cellpadding="11" cellspacing="0" width="90%">
+          <tr><th style="background:lightgray"width="30%">送料</th></th><td><%= @shipping_cost %></td></tr>
+          <tr><th style="background:lightgray">商品合計</th><td><%= @order.total_payment.to_s(:delimited) %></td></tr>
+          <tr><th style="background:lightgray"><span class="example">請求金額</span></th><td><%= (@order.total_payment += @shipping_cost).to_s(:delimited) %></td></tr>
+        </table>
+      </div>
   </div>
   <strong>支払方法</strong><br>
     <%= @order.payment_method_i18n %><br>
