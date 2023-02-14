@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-        # ライン
+        # ライン未完了
          :omniauthable, omniauth_providers: %i[line]
          # 退会済みのユーザーが同じアカウントでログイン出来ないよう制約
     def active_for_authentication?

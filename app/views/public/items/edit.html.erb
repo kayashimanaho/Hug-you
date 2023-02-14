@@ -8,14 +8,9 @@
 
     <tr><th>商品名</th><td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></td></tr>
     <tr><th>商品説明</th><td><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"商品説明"%></td></tr>
-
+    <tr><th>商品の状態</th><td><%= f.select :status, {'新品未使用':'新品未使用','ほぼ新品':'ほぼ新品','傷や汚れあり':'傷や汚れあり','状態は悪い':'状態は悪い'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %></td></tr>
     <tr><th>税抜価格</th><td><%= f.number_field :price, autofocus: true, id:"inputPrice", placeholder:"税抜価格"%>円</td></tr>
-    <tr><th>販売ステータス</th><td> <%= f.radio_button :is_active, '1', autofocus: true, id:"inputIs_active", placeholder:"販売ステータス"%>
-        <%= f.label :is_active, '販売中', value: 1 %>
-
-      <%= f.radio_button :is_active, '0', autofocus: true, id:"inputIs_active", placeholder:"販売ステータス"%>
-        <%= f.label :is_active, '販売停止中', value: 0 %>
-    <%= f.submit '変更を保存', class: "btn btn-outline-success" %></td></tr>
+    <tr><th><%= f.submit '変更を保存', class: "btn btn-outline-success" %></td></tr>
   <% end %>
   </table>
 
