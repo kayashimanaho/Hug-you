@@ -34,6 +34,7 @@ class User < ApplicationRecord
 
   # バリデーション
   validates :email, presence: true
+  validates :nick_name, presence: true
   validates :name, presence: true
   validates :postal_code, presence: true
   validates :address, presence: true

@@ -5,6 +5,8 @@ class Order < ApplicationRecord
  
   validates :payment_method, presence: true
   validates :address, presence: true
+  validates :postal_code, presence: true
+  validates :name, presence: true
 
   has_one_attached :image
   

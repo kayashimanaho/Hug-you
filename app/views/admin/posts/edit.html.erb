@@ -1,5 +1,7 @@
-<div class ="container">
-  <h5>管理者投稿編集</h5>
+<div class ="container mt-3">
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
+    管理者投稿編集
+  </div>
   <%= form_with model: @post, url: admin_post_path do |f| %>
     <table border="0" cellpadding="7" cellspacing="0" width="30%">
       <tr><th>投稿したユーザー</th><td><%= @post.user.name %></td></tr>

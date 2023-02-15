@@ -21,6 +21,12 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.text_field :nick_name, autofocus: true, placeholder:"ニックネーム" %>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fa-sharp fa-solid fa-envelope"></i></span>
             </div>
             <%= f.text_field :email, autofocus: true, placeholder:"sample@test" %>
