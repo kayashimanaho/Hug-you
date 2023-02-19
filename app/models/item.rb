@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
-  has_many :orders, dependent: :destroy
+  # has_many :orders, dependent: :destroy
   has_many :order_details, dependent: :destroy
   belongs_to :user
-  has_many :notifications, dependent: :destroy
+  # has_many :notifications, dependent: :destroy
   
 #  has_one_attached :image
   has_many_attached :images

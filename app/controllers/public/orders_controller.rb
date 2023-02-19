@@ -42,17 +42,24 @@ class Public::OrdersController < ApplicationController
     @shipping_cost = 800
     @order.status = 0
     if @order.save!
-    @cart_items.each do |cart_item|
-      @order_detail = OrderDetail.new
-      @order_detail.order_id = @order.id
-      @order_detail.item_id = cart_item.item_id
-      @order_detail.price = cart_item.item.with_tax_price
-      # @order_detail.amount = cart_item.amount
-      @order_detail.making_status = 0
-      @order_detail.save!
-    current_user.cart_items.destroy_all
-    end
-    redirect_to complete_orders_path
+      @cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.price = cart_item.item.with_tax_price
+        # @order_detail.amount = cart_item.amount
+        @order_detail.making_status = 0
+        @order_detail.save!
+        @order.notifications.create(
+          visited_id: @order_detail.item.user_id,
+          #商品の詳細に紐付いている出品者のid
+          visitor_id: current_user.id,
+          #買った人のid
+          action: 'purchase'
+        )
+        current_user.cart_items.destroy_all
+      end
+      redirect_to complete_orders_path
     else
       # if文バリデーション記述
       render :new

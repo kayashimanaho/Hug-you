@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2023_02_03_141237) do
     t.integer "visited_id"
     t.integer "room_id"
     t.integer "message_id"
-    t.integer "order_id", null: false
+    t.integer "order_id"
     t.string "action"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

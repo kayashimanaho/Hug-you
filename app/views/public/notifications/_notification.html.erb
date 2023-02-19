@@ -1,26 +1,35 @@
 <% visitor = notification.visitor %>
+<!--買った人-->
 <% visited = notification.visited %>
-  <div class ="card">
-  <% if notification.checked == true %>
-    <div class= "text-muted">
-      <%= link_to user_path(visitor) do %>
-        <%= visitor.nick_name %>さん
+<!--出品した人-->
+  <div class="card">
+    <% if notification.action == 'purchase' %>
+      <div class="text-muted">
+        <%= link_to user_path(visitor) do %>
+          <%= visitor.nick_name %>
+        <% end %>
+        さんが<%= show_item_user(notification) %>を購入しました
+      </div>
+    <% else %>
+      <% if notification.checked == true %>
+        <div class="text-muted">
+          <%= link_to user_path(visitor) do %>
+            <%= visitor.nick_name %>さん
+          <% end %>
+          <% if notification.action=='dm' %>
+            があなたにDMを送りました
+          <% end %>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to user_path(visitor) do %>
+            <%= visitor.nick_name %>さん
+          <% end %>
+          <% if notification.action=='dm' %>
+            があなた(<%= visited.nick_name %>さん)にDMを送りました
+          <% end %>
+            <%= link_to '既読にする',notification_path(notification.id),method: :put %>
+        </div>
       <% end %>
-  <% if notification.action=='dm' %>
-    があなたにDMを送りました
-  <% end %>
-    </div>
-  <% else %>
-    <div>
-      <%= link_to user_path(visitor) do %>
-        <%= visitor.nick_name %>さん
-      <% end %>
-      <% if notification.action=='dm' %>
-        があなた(<%= visited.nick_name %>さん)にDMを送りました
-      <% end %>
-        <%= link_to '既読にする',notification_path(notification.id),method: :put %>
-    </div>
-  <% end %>
+    <% end %>
 </div>
-
-
