@@ -3,13 +3,13 @@
   管理者商品購入履歴一覧
 </div>
 
-    <table border="0" cellpadding="11" cellspacing="0" width="95%">
+    <table border="0" cellpadding="11" cellspacing="0">
     <thead style="background:lightgray">
       <tr>
         <th width="20%">購入日時</th>
         <th>購入者</th>
-        <th width="20%">出品者</th>
-        <th width="20%">注文ステータス</th>
+        <!--th width="20%">出品者</th>-->
+        <th>注文ステータス</th>
      </tr>
   </thead>
   <tbody>
@@ -17,8 +17,7 @@
     <tr>
       <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></td>
       <td><%= order.user.name %></td>
-      <td><%#= order.order.item.user.name %></td>
-
+      <!--td><%#= order.user.name %></td>-->
       <td><%= order.status_i18n %></td>
     </tr>
     <% end %>

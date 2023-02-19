@@ -37,7 +37,7 @@
           <%= link_to "削除", item_path(@item.id), class: 'btn btn-outline-danger',method: :delete %>
            <%# 未購入品でない場合には、売り切れを表示 %>
       <% elsif @item.order_details.present? %>
-        <div class='sold-out'>
+        <div class='sold-out1'>
           <span>Sold Out!!</span>
         </div>
       <% else %>

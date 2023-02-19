@@ -1,15 +1,16 @@
 <div class ="container mt-3">
-<div class="h4 pb-2 mb-4 border-bottom border-danger">
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
     注文情報入力
   </div>
 
   <%= form_with url: confirm_orders_path,model: @order do |f| %>
     <strong>支払方法</strong><br>
-     <%= f.collection_radio_buttons :payment_method, Order.payment_methods_i18n, :first, :last %><br>
-     <%#= radio_button_tag :payment_method, "0", true %>
-     <%#= f.radio_button :payment_method, 'クレジットカード', value: 0 %>
-     <!--input type="radio" form="order" name="example" value="0" checked>クレジットカード-->
-
+      <%= f.radio_button :payment_method,"credit_card",:checked => true %>
+      <%= f.label 'クレジットカード' %>
+      <br>
+      <%= f.radio_button :payment_method,"transfer" %>
+      <%= f.label '銀行振込' %>
+      <br>
     <strong>お届け先</strong><br>
       <%= radio_button_tag :address_option, "0", true %>
       <%= label_tag :address_option, 'ご自身の住所', value: 0 %><br>
@@ -24,25 +25,25 @@
         <%= select_tag :address_id, options_from_collection_for_select(current_user.addresses, :id, :address_display) %><br>
         <%#= f.collection_select :order_address , current_user.addresses, :id, :address , :include_blank => "選択してください" %>
       <% end %>
-    
-     <%= radio_button_tag :address_option, "2" %>
-     <%= label_tag :address_option, '新しいお届け先', value: 2 %><br>
-     <table border="0" cellpadding="11" cellspacing="0" width="60%">
-      <tr><th>郵便番号(ハイフンなし)</th><td>
-        <%= f.text_field :postal_code, class: 'order_postal_code', placeholder:"0000000" %>
-      </td></tr>
-      <tr><th>住所</th><td>
-        <%= f.text_field :address, class: 'order_address', placeholder:"東京都渋谷区代々木神園町0-0",size: 50 %>
-      </td></tr>
-      <tr><th>宛名</th><td>
-        <%= f.text_field :name,  class: 'order_name', placeholder:"令和道子" %>
-      </td></tr>
+
+      <%= radio_button_tag :address_option, "2" %>
+      <%= label_tag :address_option, '新しいお届け先', value: 2 %><br>
+      <table border="0" cellpadding="11" cellspacing="0" width="60%">
+        <tr><th>郵便番号(ハイフンなし)</th><td>
+          <%= f.text_field :postal_code, class: 'order_postal_code', placeholder:"0000000" %>
+        </td></tr>
+        <tr><th>住所</th><td>
+          <%= f.text_field :address, class: 'order_address', placeholder:"東京都渋谷区代々木神園町0-0",size: 50 %>
+        </td></tr>
+        <tr><th>宛名</th><td>
+          <%= f.text_field :name,  class: 'order_name', placeholder:"令和道子" %>
+        </td></tr>
     </table>
 
-  <div class ="container text-center">
-    <%#= f.submit "確認画面へ進む",class: "btn btn-outline-primary" %>
-    <!--<input type="submit" id="order_button" value="確認画面に進む" onClick="check();">-->
-    <input type="submit" id="order_button" value="確認画面に進む">
-  </div>
+    <div class ="container text-center">
+      <%#= f.submit "確認画面へ進む",class: "btn btn-outline-primary" %>
+      <!--<input type="submit" id="order_button" value="確認画面に進む" onClick="check();">-->
+      <input type="submit" id="order_button" value="確認画面に進む">
+    </div>
   <% end %>
 </div>

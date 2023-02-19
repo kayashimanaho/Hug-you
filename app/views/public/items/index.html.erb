@@ -9,11 +9,18 @@
     <% @items.each do |item| %>
       <div class="card shadow-lg mb-2 mt-3 ml-3">
         <%= link_to item_path(item.id) do %>
-        <% if item.images.attached? %>
-          <%= image_tag item.images[0],size: "200x150" %>
-        <% else %>
-          <%= image_tag "noimage.png",size: "200x150" %>
-        <% end %>
+              <!--売れたらsoldoutと表示させる-->
+          <% if item.order_details.present? %>
+          <div class='sold-out'>
+          <span>Sold Out!!</span>
+          </div>
+          <% end %>
+          <% if item.images.attached? %>
+            <%= image_tag item.images[0],size: "200x150" %>
+          <% else %>
+            <%= image_tag "noimage.png",size: "200x150" %>
+          <% end %>
+
         <div class="card-body">
           <p class="card-text"><%= item.name %></p>
           <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
