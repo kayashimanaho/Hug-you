@@ -14,9 +14,7 @@
           <% end %>
           <%= link_to "購入履歴",orders_path,class: "btn btn-outline-info" %>
           <%= link_to "配送先",addresses_path,class: "btn btn-outline-info" %>
-
         </div>
-        
         <table border="2" cellpadding="7" cellspacing="0" width="80%">
           <tr><th>氏名</th><td><%= @user.name %></td></tr>
           <tr><th>メールアドレス</th><td><%= @user.email %></td></tr>
@@ -27,9 +25,7 @@
           <tr><th>年齢</th><td><%= @user.age %>歳</td></tr>
           <tr><th>自己紹介文</th><td><%= @user.introduction %></td></tr>
         </table>
-        
       </div>
-
       <div class ="col-3">
         <div>今までの投稿履歴</div>
           <% @posts.each do |posts| %>
@@ -39,31 +35,30 @@
               </small>
               <div class="card-body1">
               <!--card自体をリンクにしたい-->
-              <%= link_to post_path(posts.id) do %>
-              <h5 class="card-title">
-                <!--押したユーザーの投稿詳細に行きたい-->
-                <%= link_to user_path(posts.user_id) do %>
-              <span>
-                <% if posts.user.profile_image.attached? %>
-                  <%= image_tag posts.user.profile_image, size: "50x50" %>
-                <% else %>
-                  <%= image_tag "no_image.jpeg", size: "50x50" %>
-                <% end %>
-                  <%= posts.user.nick_name %>
-              </span>
-              <% end %>
-              </h5>
-                <p class="card-text"><%= posts.content.truncate(20) %></p>
-                <p><%= link_to "#{posts.comments.count} 件", post_path(posts.id) %>
-                <i class="fa-regular fa-comment"></i>
-                  <%= link_to "コメント", post_path(posts.id) %>
-                </p>
+                <%= link_to post_path(posts.id) do %>
+                  <h5 class="card-title">
+                    <!--押したユーザーの投稿詳細に行きたい-->
+                    <%= link_to user_path(posts.user_id) do %>
+                      <span>
+                        <% if posts.user.profile_image.attached? %>
+                          <%= image_tag posts.user.profile_image, size: "50x50" %>
+                        <% else %>
+                          <%= image_tag "no_image.jpeg", size: "50x50" %>
+                        <% end %>
+                          <%= posts.user.nick_name %>
+                      </span>
+                    <% end %>
+                  </h5>
+                  <p class="card-text"><%= posts.content.truncate(20) %></p>
+                  <p><%= link_to "#{posts.comments.count} 件", post_path(posts.id) %>
+                    <i class="fa-regular fa-comment"></i>
+                    <%= link_to "コメント", post_path(posts.id) %>
+                  </p>
               </div>
           <% end %>
             </div>
           <% end %>
       </div>
-
       <div class="col-2.5">
         <div>今までの出品履歴</div>
           <% @items.each do |item| %>

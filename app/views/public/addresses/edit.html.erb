@@ -3,18 +3,17 @@
     配送先編集
   </div>
     <%= form_with model: @address, url: address_path(@address.id),method: :patch do |f| %><br>
-  
-     <table border="0" cellpadding="11" cellspacing="0" width="60%">
-       <tr><th>郵便番号(ハイフンなし)</th><td>
-         <%= f.text_field :postal_code, autofocus: true, id:"inputpostal_code" %>
-       </td></tr>
-       <tr><th>住所</th><td>
-         <%= f.text_field :address, autofocus: true, id:"address",size: 50 %>
-       </td></tr>
-       <tr><th>宛名</th><td>
-         <%= f.text_field :name, autofocus: true, id:"inputName" %>
-       </td></tr>
-     </table>
+      <table border="0" cellpadding="11" cellspacing="0" width="60%">
+        <tr><th>郵便番号(ハイフンなし)</th><td>
+          <%= f.text_field :postal_code, autofocus: true, id:"inputpostal_code" %>
+        </td></tr>
+        <tr><th>住所</th><td>
+          <%= f.text_field :address, autofocus: true, id:"address",size: 50 %>
+        </td></tr>
+        <tr><th>宛名</th><td>
+          <%= f.text_field :name, autofocus: true, id:"inputName" %>
+        </td></tr>
+      </table>
       <%= f.submit "編集内容を保存", class: "btn btn-outline-success" %>
     <% end %>
-  </div>
+</div>

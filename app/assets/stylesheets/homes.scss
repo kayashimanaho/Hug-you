@@ -12,9 +12,12 @@
 
 
 .about-bg {
-  background: image-url("2.jpg") center center / cover no-repeat fixed;
-  height: 160%;
-  vertical-align: bottom;
+  background-image: image-url("2.jpg") ;
+  height: 580px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

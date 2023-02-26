@@ -19,6 +19,7 @@ class Public::RoomsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     @room = Room.find(params[:id]) #一つのroomを表示
     @messages = @room.messages.all #過去のやり取りを全て表示
     @message = Message.new #新しくメッセージを作る

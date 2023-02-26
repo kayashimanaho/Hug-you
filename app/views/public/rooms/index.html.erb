@@ -2,6 +2,7 @@
   <h5><div class="h4 pb-2 mb-4  border-bottom border-danger">
     メッセージ一覧
   </div></h5>
+  <% if @another_entries.any? %>
     <% @another_entries.each do |entry| %>
       <%= link_to room_path(entry.room) do %>
       <div class ="card">
@@ -26,4 +27,7 @@
       </div>
       <% end %>
     <% end %>
+  <% else %>
+    <h6>まだメッセージはありません</h6>
+  <% end %>
 </div>

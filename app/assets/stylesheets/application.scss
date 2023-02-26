@@ -19,9 +19,11 @@
 
 body {
   // ref: https://coliss.com/articles/build-websites/operation/css/css-responsive-full-background-image-by-sixrevisions.html
-  background: image-url("bg6.jpg") center center / cover no-repeat fixed;
+  background-image: image-url("bg6.jpg");
   background-color: #bfd8d2 !important;
   background-blend-mode: lighten;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header {
@@ -30,7 +32,7 @@ header {
 }
 
 footer {
-  background: image-url("ft5.jpg");
+  background-image: image-url("ft5.jpg");
   background-size: cover;
 }
 

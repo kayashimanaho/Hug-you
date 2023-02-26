@@ -9,30 +9,28 @@
     <% @items.each do |item| %>
       <div class="card shadow-lg mb-2 mt-3 ml-3">
         <%= link_to item_path(item.id) do %>
-              <!--売れたらsoldoutと表示させる-->
+              <!--売れたらsoldoutと表示させる17行まで-->
           <% if item.order_details.present? %>
-          <div class='sold-out'>
-          <span>Sold Out!!</span>
-          </div>
+            <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
           <% end %>
           <% if item.images.attached? %>
             <%= image_tag item.images[0],size: "200x150" %>
           <% else %>
             <%= image_tag "noimage.png",size: "200x150" %>
           <% end %>
-
-        <div class="card-body">
-          <p class="card-text"><%= item.name %></p>
-          <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
-          <% end %>
-        </div>
+          <div class="card-body">
+            <p class="card-text"><%= item.name %></p>
+            <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
+        <% end %>
+          </div>
       </div>
-      <% end %>
-    </div>
-    </div>
-  </div>
-  <div class="d-flex align-items-center justify-content-center">
-    <%= paginate @items %>
+    <% end %>
   </div>
 </div>
+<div class="d-flex align-items-center justify-content-center">
+  <%= paginate @items %>
+</div>
+
 
