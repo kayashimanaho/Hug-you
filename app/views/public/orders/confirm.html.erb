@@ -1,7 +1,7 @@
 <div class ="container mt-3">
-<div class="h4 pb-2 mb-4 border-bottom border-danger">
-  注文情報確認
-</div>
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
+    注文情報確認
+  </div>
   <div class ="row">
     <div class ="col-8">
       <table border="1" cellpadding="11" cellspacing="0" width="100%">
@@ -12,7 +12,6 @@
             <th>単価（税込）</th>
           </tr>
         </thead>
-
         <tbody style >
           <% @cart_items.each do |cart_item| %>
           <tr>
@@ -28,13 +27,13 @@
         </tbody>
       </table>
     </div>
-     <div class ="col-4">
-        <table border="1" cellpadding="11" cellspacing="0" width="90%">
-          <tr><th style="background:lightgray"width="30%">送料</th></th><td><%= @shipping_cost %></td></tr>
-          <tr><th style="background:lightgray">商品合計</th><td><%= @order.total_payment.to_s(:delimited) %></td></tr>
-          <tr><th style="background:lightgray"><span class="example">請求金額</span></th><td><%= (@order.total_payment += @shipping_cost).to_s(:delimited) %></td></tr>
-        </table>
-      </div>
+    <div class ="col-4">
+      <table border="1" cellpadding="11" cellspacing="0" width="90%">
+        <tr><th style="background:lightgray"width="30%">送料</th></th><td><%= @shipping_cost %></td></tr>
+        <tr><th style="background:lightgray">商品合計</th><td><%= @order.total_payment.to_s(:delimited) %></td></tr>
+        <tr><th style="background:lightgray"><span class="example">請求金額</span></th><td><%= (@order.total_payment += @shipping_cost).to_s(:delimited) %></td></tr>
+      </table>
+    </div>
   </div>
   <strong>支払方法</strong><br>
     <%= @order.payment_method_i18n %><br>

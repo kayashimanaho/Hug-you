@@ -2,7 +2,6 @@
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
     発送先一覧
   </div>
-  
   <%= form_with url: addresses_path,model: @address do |f| %>
   <div class ="mb-3">
     <a>郵便番号(ハイフンなし)</a>
@@ -28,7 +27,6 @@
         <th width="70%"></th>
        </tr>
       </thead>
-    
       <tbody style >
         <% @addresses.each do |address| %>
         <tr>

@@ -15,8 +15,7 @@
       <tr><th>商品画像</th><td><%= f.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png", data: { images_target: "select", action: "change->images#selectImages" } %></td></tr>
       <tr><th></th><td class = "text-danger">*投稿できる枚数は４枚までです</td></tr>
       <tr><th>商品名</th><td><%= f.text_field :name %></td></tr>
-      <tr><th>商品説明</th><td><%= f.text_area :introduction %></td></tr>
-      <tr><th><%= f.label :status, '商品の状態' %></th><td><%= f.select :status, {'新品未使用':'新品未使用','ほぼ新品':'ほぼ新品','傷や汚れあり':'傷や汚れあり','状態は悪い':'状態は悪い'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %></td></tr>
+      <tr><th>商品説明</th><td><%= f.text_area :introduction %></td></tr><tr><th><%= f.label :status, '商品の状態' %></th><td><%= f.select :status, {'新品未使用':'新品未使用','ほぼ新品':'ほぼ新品','傷や汚れあり':'傷や汚れあり','状態は悪い':'状態は悪い'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %></td></tr>
       <tr><th>販売価格(税抜)</th><td><%= f.number_field :price %>円</td></tr>
       <tr><th><%= f.submit '出品する', class: "btn btn-outline-danger" %></td></tr>
     </table>

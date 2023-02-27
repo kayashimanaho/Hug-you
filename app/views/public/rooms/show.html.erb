@@ -4,41 +4,40 @@
       <%= image_tag @another_entry.user.get_profile_image(100,100) %><br>
       <div class="mt-2">
         <h6><%= @another_entry.user.nick_name %></h6>
-      </div>  
+      </div>
     </div>
     <!--%= ("#{@another_entry.user.nick_name}さんとのメッセージ") %>-->
   </div>
-
-    <% @messages.each do |m| %>
-      <% if m.user_id == current_user.id %>
-      <div class ="current_user">
-        <strong class="current_user"><%= m.content %></strong>
-        <small class="current_user"><%= m.user.nick_name %></small>
-      </div>
-      <div class ="time">
-          <small class="text-black-50">
-            <%= m.created_at.strftime('%Y/%m/%d %H:%M') %>
-          </small>
-      </div>
-      <% else %>
-        <div class="visited_user">
-          <strong class="visited_user"><%= m.content %></strong>
-          <small class="visited_user"><%= m.user.nick_name %></small>
-        </div>
+  <% @messages.each do |m| %>
+    <% if m.user_id == current_user.id %>
+    <div class ="current_user">
+      <strong class="current_user"><%= m.content %></strong>
+      <small class="current_user"><%= m.user.nick_name %></small>
+    </div>
+    <div class ="time">
         <small class="text-black-50">
           <%= m.created_at.strftime('%Y/%m/%d %H:%M') %>
         </small>
-      <% end %>
-    <% end %>
-    <div class ="current_user_1">
-      <%= form_for @message do |f| %>
-        <div class ="chat-form-group">
-          <%= f.text_field :content %>
-          <%= f.hidden_field :room_id, :value => @room.id %>
-          <%= f.button type: "submit" do %> 
-            送信 <i class="fas fa-paper-plane"></i>
-          <% end %>
-        </div>
-      <% end %>
     </div>
+    <% else %>
+      <div class="visited_user">
+        <strong class="visited_user"><%= m.content %></strong>
+        <small class="visited_user"><%= m.user.nick_name %></small>
+      </div>
+      <small class="text-black-50">
+        <%= m.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </small>
+    <% end %>
+  <% end %>
+  <div class ="current_user_1">
+    <%= form_for @message do |f| %>
+      <div class ="chat-form-group">
+        <%= f.text_field :content %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <%= f.button type: "submit" do %>
+          送信 <i class="fas fa-paper-plane"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

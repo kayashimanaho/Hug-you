@@ -1,7 +1,7 @@
 <div class ="container mt-3">
-<div class="h4 pb-2 mb-4 border-bottom border-danger">
-  管理者出品編集
-</div>
+  <div class="h4 pb-2 mb-4 border-bottom border-danger">
+    管理者出品編集
+  </div>
   <%= form_with model: @item, url: admin_item_path do |f| %>
     <table border="0" cellpadding="7" cellspacing="0" width="30%">
       <tr><th>出品したユーザー</th><td><%= @item.user.name %></td></tr>
@@ -11,6 +11,5 @@
       <tr><th><%= f.label :status, '商品の状態' %></th><td><%= f.select :status, {'新品未使用':'新品未使用','ほぼ新品':'ほぼ新品','傷や汚れあり':'傷や汚れあり','状態は悪い':'状態は悪い'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %></td></tr>
       <tr><th></th><td><%= f.submit "変更を保存", class: "btn btn-outline-info" %></td></tr>
     </table>
-
-    <% end %>
+  <% end %>
 </div>

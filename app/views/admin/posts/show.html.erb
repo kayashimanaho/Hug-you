@@ -2,30 +2,30 @@
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
     管理者投稿詳細
   </div>
-    <table border="0" cellpadding="7" cellspacing="0" width="30%">
-      <tr><th>投稿したユーザー</th><td><%= @post.user.name %></td></tr>
-      <tr><th>投稿内容</th><td><%= @post.content %></td></tr>
-      <tr><th></th><td>
-        <div class ="mb-2">
-          <%= link_to "編集する",  edit_admin_post_path, class:' btn btn-outline-info' %>
-        </div>
-        <%= link_to "削除",  admin_post_path(@post.id), class:' btn btn-outline-danger',method: :delete %>
-      </td></tr>
-    </table>
-    <table border="0" cellpadding="11" cellspacing="0" width="95%">
-        <thead>
-          <tr>
-            <th width="10%">氏名</th>
-            <th width="50%">コメント</th>
-         </tr>
-      </thead>
-      <tbody>
-        <% @comments.each do |comment| %>
+  <table border="0" cellpadding="7" cellspacing="0" width="30%">
+    <tr><th>投稿したユーザー</th><td><%= @post.user.name %></td></tr>
+    <tr><th>投稿内容</th><td><%= @post.content %></td></tr>
+    <tr><th></th><td>
+      <div class ="mb-2">
+        <%= link_to "編集する",  edit_admin_post_path, class:' btn btn-outline-info' %>
+      </div>
+      <%= link_to "削除",  admin_post_path(@post.id), class:' btn btn-outline-danger',method: :delete %>
+    </td></tr>
+  </table>
+  <table border="0" cellpadding="11" cellspacing="0" width="95%">
+      <thead>
         <tr>
-          <td><%= comment.user.name %></td>
-          <td><%= link_to comment.comment,edit_admin_comment_path(comment.id) %></td>
-          <td></td>
-        <% end %>
-      </tbody>
-      </table>
+          <th width="10%">氏名</th>
+          <th width="50%">コメント</th>
+       </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.name %></td>
+        <td><%= link_to comment.comment,edit_admin_comment_path(comment.id) %></td>
+        <td></td>
+      <% end %>
+    </tbody>
+  </table>
 </div>

@@ -23,8 +23,8 @@
           <td><%= link_to post.content.truncate(10),admin_post_path(post.id) %></td>
         <% end %>
       </tbody>
-      </table>
-      <div class="d-flex align-items-center justify-content-center">
-        <%= paginate @comments %>
-      </div>
+    </table>
+  <div class="d-flex align-items-center justify-content-center">
+    <%= paginate @posts %>
   </div>
+</div>

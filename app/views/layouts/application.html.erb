@@ -11,16 +11,15 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-
   </head>
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm bg-white">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <%= link_to image_tag "logo4.png",size:"100x70" %>
-          <%#= link_to image_tag("logo.jpg"), "/", size: '10x20' %>
-          <%#= link_to "Hug you",root_path,class: 'nav-link text-dark' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo4.png',:size =>'90x60' %>
+          <% end %>
           <a class="navbar-brand p-3" href="/"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

@@ -2,10 +2,10 @@
   <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
     管理者コメント詳細
   </div>
-    <table border="0" cellpadding="7" cellspacing="0" width="30%">
-      <tr><th>コメントしたユーザー</th><td><%= @comment.user.name %></td></tr>
-      <tr><th>コメント</th><td><%= @comment.comment %></td></tr>
-    </table>  
-    <%= link_to "編集する",  edit_admin_comment_path, class:' btn btn-info' %>
-    <%= link_to "削除",  admin_comment_path(@comment.id), method: :delete %>
+  <table border="0" cellpadding="7" cellspacing="0" width="30%">
+    <tr><th>コメントしたユーザー</th><td><%= @comment.user.name %></td></tr>
+    <tr><th>コメント</th><td><%= @comment.comment %></td></tr>
+  </table>  
+  <%= link_to "編集する",  edit_admin_comment_path, class:' btn btn-info' %>
+  <%= link_to "削除",  admin_comment_path(@comment.id), method: :delete %>
 </div>

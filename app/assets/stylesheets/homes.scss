@@ -12,18 +12,18 @@
 
 
 .about-bg {
-  background-image: image-url("2.jpg") ;
+  background-image: image-url("5.png") ;
   height: 580px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-size: cover;
+  background-position: 0 0 100px 100px;
+
 }
 
 
 .text {
   padding-top: 300px;
-  color: #df744a;
+  color: gray;
 }
 
 .font-color {

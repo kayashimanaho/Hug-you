@@ -7,7 +7,6 @@
       <tr><th>投稿したユーザー</th><td><%= @post.user.name %></td></tr>
       <tr><th>投稿内容</th><td><%= f.text_area :content, autofocus: true, id:"inputContent" %></td></tr>
       <tr><th></th><td><%= f.submit "変更を保存", class: "btn btn-outline-info" %></td></tr>
-    </table>  
-    
-    <% end %>
+    </table>
+  <% end %>
 </div>
