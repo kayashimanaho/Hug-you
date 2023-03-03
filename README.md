@@ -39,5 +39,3 @@ https://docs.google.com/spreadsheets/d/1jCb9eWGaeW1oXPgihjlyAzBq8SW_P_QNnadoNjAd
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。（検討中です）

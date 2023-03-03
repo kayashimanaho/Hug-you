@@ -6,7 +6,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.order(created_at: :desc).page(params[:page]).per(10)
+    @items = Item.all.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def create
