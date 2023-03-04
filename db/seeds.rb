@@ -6,10 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.find_by(email:'kayashi0624@test.com').destroy
 Admin.create!(
    email: 'kayashi0624@test.com',
    password: 'hogehoge'
 )
+
+User.find_by(email:'kayashima@test.com').destroy
+User.find_by(email:'ashida@test.com').destroy
+User.find_by(email:'akashi@test.com').destroy
 
 users = User.create!(
   [
@@ -19,21 +24,34 @@ users = User.create!(
   ]
 )
 
-Post.create!(
+posts = Post.create!(
   [
-    {post: '３歳の娘が中々言う事を聞いてくれません。毎日イヤイヤ期です', user_id: users[1].id },
-    {post: '下の子が寝返りがまだできないです。もう半年過ぎたのにできなくて大丈夫かなと不安です。成長が遅かった方いますか', user_id: users[1].id },
-    {post: '二人育児の方、一人でお風呂はどうしていますか。スムーズなやり方教えて下さい', user_id: users[1].id },
-    {post: '野菜が嫌いすぎて何も食べてくれません。何かいい方法ありませんか。', user_id: users[2].id },
-    {post: '小学生の息子ですが、宿題を中々してくれません。ついつい怒ってしまいます。', user_id: users[3].id },
+    {content: '３歳の娘が中々言う事を聞いてくれません。毎日イヤイヤ期です', user_id: users[0].id },
+    {content: '下の子が寝返りがまだできないです。もう半年過ぎたのにできなくて大丈夫かなと不安です。成長が遅かった方いますか', user_id: users[0].id },
+    {content: '二人育児の方、一人でお風呂はどうしていますか。スムーズなやり方教えて下さい', user_id: users[0].id },
+    {content: '野菜が嫌いすぎて何も食べてくれません。何かいい方法ありませんか。', user_id: users[1].id },
+    {content: '小学生の息子ですが、宿題を中々してくれません。ついつい怒ってしまいます。', user_id: users[2].id },
   ]
 )
 
 Comment.create!(
   [
-    {comment: "わかります。うちの子は５歳ですが今だにイヤイヤです。イライラしちゃいますよね。。", post_id: posts[1], user_id: users[2]},
-    {comment: "もう言わせとけばいいです。そのうち言わなくなります。", post_id: posts[1], user_id: users[3]},
-    {comment: "うちの子もかなり遅かったです。寝返りだけじゃなくて全て。", post_id: posts[2], user_id: users[1]},
-    {comment: "まず自分が超特急で洗って下の子を入れて、上の子は自分で洗ってもらう。マット的なのがあれば便利ですよね。", post_id: posts[3], user_id: users[2]},
+    {comment: "わかります。うちの子は５歳ですが今だにイヤイヤです。イライラしちゃいますよね。。", post_id: posts[0], user_id: users[1]},
+    {comment: "もう言わせとけばいいです。そのうち言わなくなります。", post_id: posts[0], user_id: users[2]},
+    {comment: "うちの子もかなり遅かったです。寝返りだけじゃなくて全て。", post_id: posts[1], user_id: users[0]},
+    {comment: "まず自分が超特急で洗って下の子を入れて、上の子は自分で洗ってもらう。マット的なのがあれば便利ですよね。", post_id: posts[2], user_id: users[1]},
+  ]
+)
+
+Item.create!(
+  [
+    {images:
+      [
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item1.jpg"), filename:"sample-item1.jpg"),
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item2.jpg"), filename:"sample-item1.jpg")
+      ], user_id: users[1]},
+    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), post_id: posts[1], user_id: users[3]},
+    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), post_id: posts[2], user_id: users[1]},
+    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), post_id: posts[3], user_id: users[2]},
   ]
 )

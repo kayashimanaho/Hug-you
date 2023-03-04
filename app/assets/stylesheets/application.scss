@@ -17,19 +17,20 @@
 
 // @import "bootstrap";
 
-body {
+.body {
   // ref: https://coliss.com/articles/build-websites/operation/css/css-responsive-full-background-image-by-sixrevisions.html
   background-image: image-url("bg6.jpg");
   background-color: #bfd8d2 !important;
   background-blend-mode: lighten;
   background-repeat: no-repeat;
   background-size: cover;
-  background-size: 200%;
+  //background-size: 200%;
 }
 
 header {
   // background: image-url("hd3.jpg");
   background-size: cover;
+ 
 }
 
 footer {

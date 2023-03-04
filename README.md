@@ -39,3 +39,5 @@ https://docs.google.com/spreadsheets/d/1jCb9eWGaeW1oXPgihjlyAzBq8SW_P_QNnadoNjAd
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+##その他
+- 今回、他ユーザーからの複数購入時の送料も同一とする

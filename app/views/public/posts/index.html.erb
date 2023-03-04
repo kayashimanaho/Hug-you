@@ -3,39 +3,44 @@
 </div>
 <div class ="container">
   <div class ="row">
-    <div class ="col-9 mt-4 mb-2 ml-3">
-      <div class="">
-        <div class="title text-center md-5 sm-5 col-12 ml-5">
-          <h5><%= image_tag "logo5.png",size:"300x100" %></h5>
+    <div class ="col-12 mt-4 mb-2 text-center ">
+      <%= image_tag "logo5.png",size:"300x100" %>
+    </div>
+  </div>
+  <!--キーワード検索-->
+  <div class ="row">
+    <div class ="text-right col-xl-6 col-12 mt-5">
+      <a><i class="fa-solid fa-magnifying-glass"></i>キーワード検索</a>
+      <%= form_tag(posts_path, :method => "get") do %>
+        <%= text_field_tag :search %>
+        <div class ="mt-2">
+          <%= submit_tag "検索" ,:username => nil ,class: "button is-info"%>
         </div>
-      </div>
-      <!--キーワード検索-->
-      <div class ="row">
-        <div class ="text-right col-xl-6 col-6 mt-5">
-          <a><i class="fa-solid fa-magnifying-glass"></i>キーワード検索</a>
-            <%= form_tag(posts_path, :method => "get") do %>
-            <%= text_field_tag :search %>
-              <div class ="mt-2">
-                <%= submit_tag "検索" ,:username => nil ,class: "button is-info"%>
-              </div>
-            <% end %>
-        </div>
-        <div class ="text-right col-5 mt-3 ml-5">
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class ="text-right col-12 mt-3">
       <!--投稿フォーム-->
-          <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-          <h4></h4>
-            <%= f.text_area :content, size: "44x4",placeholder:"投稿しよう"  %>
-            <%= f.submit '投稿' %>
-          <% end %>
+      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+      <div class="row">
+        <div class="col-12 col-md-6">
+        <%= f.text_area :content, placeholder:"投稿しよう", class: "w-100"  %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12 col-md-6 text-right">
+        <%= f.submit '投稿' %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
     <!--いいねランキング-->
   <div class="new">
     <a><i class="fa-brands fa-usps"></i>新着順</a>
   </div>
-  <div class="row">
+  <div class="row" >
     <div class ="mt-3 col-md-3 col-sm-3 col-xs-3">
       <div class="card border-dark mb-3" style="max-width: 18rem;">
         <div class="card-header"><i class="fa-solid fa-check"></i>いいね!ランキング</div>
