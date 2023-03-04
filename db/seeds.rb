@@ -6,15 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.find_by(email:'kayashi0624@test.com').destroy
+# Admin.find_by(email:'kayashi0624@test.com').destroy
 Admin.create!(
    email: 'kayashi0624@test.com',
    password: 'hogehoge'
 )
 
-User.find_by(email:'kayashima@test.com').destroy
-User.find_by(email:'ashida@test.com').destroy
-User.find_by(email:'akashi@test.com').destroy
+# User.find_by(email:'kayashima@test.com').destroy
+# User.find_by(email:'ashida@test.com').destroy
+# User.find_by(email:'akashi@test.com').destroy
 
 users = User.create!(
   [
@@ -36,10 +36,10 @@ posts = Post.create!(
 
 Comment.create!(
   [
-    {comment: "わかります。うちの子は５歳ですが今だにイヤイヤです。イライラしちゃいますよね。。", post_id: posts[0], user_id: users[1]},
-    {comment: "もう言わせとけばいいです。そのうち言わなくなります。", post_id: posts[0], user_id: users[2]},
-    {comment: "うちの子もかなり遅かったです。寝返りだけじゃなくて全て。", post_id: posts[1], user_id: users[0]},
-    {comment: "まず自分が超特急で洗って下の子を入れて、上の子は自分で洗ってもらう。マット的なのがあれば便利ですよね。", post_id: posts[2], user_id: users[1]},
+    {comment: "わかります。うちの子は５歳ですが今だにイヤイヤです。イライラしちゃいますよね。。", post_id: posts[0].id, user_id: users[1].id},
+    {comment: "もう言わせとけばいいです。そのうち言わなくなります。", post_id: posts[0].id, user_id: users[2].id},
+    {comment: "うちの子もかなり遅かったです。寝返りだけじゃなくて全て。", post_id: posts[1].id, user_id: users[2].id},
+    {comment: "まず自分が超特急で洗って下の子を入れて、上の子は自分で洗ってもらう。マット的なのがあれば便利ですよね。", post_id: posts[2].id, user_id: users[1].id},
   ]
 )
 
@@ -48,10 +48,20 @@ Item.create!(
     {images:
       [
         ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item1.jpg"), filename:"sample-item1.jpg"),
-        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item2.jpg"), filename:"sample-item1.jpg")
-      ], user_id: users[1]},
-    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), post_id: posts[1], user_id: users[3]},
-    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), post_id: posts[2], user_id: users[1]},
-    {image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), post_id: posts[3], user_id: users[2]},
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item2.jpg"), filename:"sample-item2.jpg")
+      ], name: '冬用赤ちゃん', introduction: '男女兼用１００センチ 一回しか着ていません即購入おk!自宅保管のため神経質な方はご遠慮下さい', status: 'ほぼ新品', price: '3000', user_id: users[1].id},
+    {images:
+      [
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item3.jpg"), filename:"sample-item3.jpg"),
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item4.jpg"), filename:"sample-item4.jpg"),
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item5.jpg"), filename:"sample-item5.jpg")
+      ], name: '男の子用', introduction: 'サイズが合わなくて出品します。試着程度しか着てないです。１２０センチ自宅保管の為気になる方はご遠慮下さい', status: 'ほぼ新品', price: '2500', user_id: users[0].id},
+    {images:
+      [
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item6.jpg"), filename:"sample-item6.jpg"),
+        ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-item7.jpg"), filename:"sample-item7.jpg")
+      ], name: '女の子用', introduction: 'サイズアウトしたので出品します。かなり着ているので神経してな方はご遠慮下さい', status: '傷や汚れあり', price: '1000', user_id: users[2].id}
+
   ]
 )
+

@@ -16,7 +16,9 @@
 
 
 // @import "bootstrap";
-
+body{
+min-height: 100vh;
+}
 .body {
   // ref: https://coliss.com/articles/build-websites/operation/css/css-responsive-full-background-image-by-sixrevisions.html
   background-image: image-url("bg6.jpg");
@@ -25,17 +27,22 @@
   background-repeat: no-repeat;
   background-size: cover;
   //background-size: 200%;
+  min-height:  calc(100vh - 160px - 76px);
 }
 
 header {
   // background: image-url("hd3.jpg");
   background-size: cover;
- 
+
 }
+
+
 
 footer {
   background-image: image-url("ft5.jpg");
   background-size: cover;
+
+
 }
 
 
