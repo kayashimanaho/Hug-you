@@ -1,6 +1,6 @@
 <div class ="container mt-3">
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
-      <%= @user.name %>さんの情報編集
+      <%= @user.name %>さんの編集
   </div>
     <%= form_with model: @user, url: information_users_path do |f| %>
     <%= image_tag @user.get_profile_image(100,100) %>
