@@ -1,14 +1,14 @@
 <div class ="flash">
   <%= flash[:notice] %>
 </div>
-<div class ="container text-center mt-3">
+<div class ="container mt-3">
   <div class="h4 pb-2 mb-4 border-bottom border-danger">
     商品の詳細
   </div>
     <div class ="row">
       <div class ="col-12">
         <% @item.images.each do |image|%>
-          <%= image_tag image, size: "200x200" %>
+          <%= image_tag image, size: "150x150" %>
         <% end %>
         <% if @item.images.length == 0 %>
           <%= image_tag 'noimage.png', size: "200x200" %>
