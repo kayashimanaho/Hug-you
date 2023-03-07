@@ -33,18 +33,11 @@ min-height: 100vh;
 header {
   // background: image-url("hd3.jpg");
   background-size: cover;
-
 }
-
-
-
 footer {
   background-image: image-url("ft5.jpg");
   background-size: cover;
-
-
 }
-
 
 .footer-text {
   color: #df744a;
@@ -85,3 +78,7 @@ footer {
   background: #FF0000C0;     /* 背景色を赤に指定 */
   border-radius: 50%;   /* 角丸を50%に指定 */
 }
+
+.font1 {
+  font-family: 'Kiwi Maru', serif;
+  }

@@ -4,6 +4,9 @@
     <title>HugYou</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <script src="https://kit.fontawesome.com/e820bdb904.js" crossorigin="anonymous"></script>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
@@ -12,133 +15,138 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
   </head>
-
-  <body class="d-flex flex-column"> 
+  <body class="d-flex flex-column">
     <header class="shadow-sm bg-white">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <%= link_to root_path do %>
-            <%= image_tag 'logo4.png',:size =>'90x60' %>
-          <% end %>
-          <a class="navbar-brand p-3" href="/"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
-            <!--DMが来たら通知してくれる記述-->
-            <li class ="nav-item">
-             <% if unchecked_notifications.any? %>
-              <div class="nav-link1">
-                <%= link_to "通知", notifications_path , class: "nav-link text-dark notice-active" %>
-              </div>
-             <% else %>
-               <%= link_to "通知", notifications_path , class: "nav-link text-dark" %>
-             <% end %>
-            </li>
-            <button type="button" class="btn btn-white" data-toggle="modal" data-target="#exampleModal">
-             マイページ
+      <div class="font1">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <%= link_to root_path do %>
+              <%= image_tag 'logo4.png',:size =>'90x60' %>
+            <% end %>
+            <a class="navbar-brand p-3" href="/"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+              <!--DMが来たら通知してくれる記述-->
+              <li class ="nav-item">
+               <% if unchecked_notifications.any? %>
+                <div class="nav-link1">
+                  <%= link_to "通知", notifications_path , class: "nav-link text-dark notice-active" %>
+                </div>
+               <% else %>
+                 <%= link_to "通知", notifications_path , class: "nav-link text-dark" %>
+               <% end %>
+              </li>
+              <button type="button" class="btn btn-white" data-toggle="modal" data-target="#exampleModal">
+               マイページ
+              </button>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">menu</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <%= link_to information_edit_users_path, class: 'btn btn-outline-secondary' do %>
-                        <span><i class="fas fa-user-cog"></i></span>
-                    <% end %>
-                    <%= link_to rooms_path,class: 'btn btn-outline-info' do %>
-                      <span>メッセージ一覧</span>
-                    <% end %>
-                    <%= link_to "購入履歴",orders_path,class: "btn btn-outline-info" %>
-                    <%= link_to "配送先",addresses_path,class: "btn btn-outline-info" %>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                    <button type="button" class="btn btn-outline-primary"><%= link_to 'マイページ詳細へ', my_page_users_path %></button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">menu</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= link_to information_edit_users_path, class: 'btn btn-outline-secondary' do %>
+                          <span><i class="fas fa-user-cog"></i></span>
+                      <% end %>
+                      <%= link_to rooms_path,class: 'btn btn-outline-info' do %>
+                        <span>メッセージ一覧</span>
+                      <% end %>
+                      <%= link_to "購入履歴",orders_path,class: "btn btn-outline-info" %>
+                      <%= link_to "配送先",addresses_path,class: "btn btn-outline-info" %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                      <button type="button" class="btn btn-outline-primary"><%= link_to 'マイページ詳細へ', my_page_users_path %></button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <li class="nav-item">
-              <%= link_to "コミュニティルーム", posts_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "出品する", new_item_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "買い物する", items_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト',  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
-            <% elsif admin_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "購入履歴一覧", admin_orders_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "出品情報", admin_items_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "会員一覧", admin_root_path, class: 'nav-link text-dark' %>
-            </li>
-            <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
-             </li>
-            <% else %>
-            <li class="nav-item">
-              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
-            </li>
-            <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main class="mb-auto body">
-    <%= yield %>
-    </main>
-    <footer class="pt-4 pb-4">
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <div class ="footer-text">
-              <strong>子育てに悩む人の為のコミュニティーサイト</strong>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <%= link_to "お問い合わせ", new_contact_path, class: "link" %>
-            <ul class="p-0 list-unstyled">
-              <li>
-                <%= link_to "プライバシーポリシー", privacy_path, class: "link" %>
+              <li class="nav-item">
+                <%= link_to "コミュニティルーム", posts_path, class: 'nav-link text-dark' %>
               </li>
-            </ul>
+              <li class="nav-item">
+                <%= link_to "出品する", new_item_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "買い物する", items_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト',  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </li>
+              <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "購入履歴一覧", admin_orders_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "出品情報", admin_items_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "会員一覧", admin_root_path, class: 'nav-link text-dark' %>
+              </li>
+              <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+               </li>
+              <% else %>
+              <li class="nav-item">
+                <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+              </li>
+              <% end %>
+              </ul>
+            </div>
           </div>
-          <div class="sns">
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-slack"></i>
-            <i class="fa-brands fa-youtube"></i>
+        </nav>
+      </header>
+      <main class="mb-auto body">
+        <div class="font1">
+          <%= yield %>
+        </div>
+      </main>
+      <footer class="pt-4 pb-4">
+        <div class="font1">
+          <div class="container">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <div class ="footer-text">
+                  <strong>子育てに悩む人の為のコミュニティーサイト</strong>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <%= link_to "お問い合わせ", new_contact_path, class: "link" %>
+                <ul class="p-0 list-unstyled">
+                  <li>
+                    <%= link_to "プライバシーポリシー", privacy_path, class: "link" %>
+                  </li>
+                </ul>
+              </div>
+              <div class="sns">
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-slack"></i>
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>
