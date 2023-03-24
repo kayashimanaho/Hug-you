@@ -33,8 +33,8 @@
 https://docs.google.com/spreadsheets/d/1jCb9eWGaeW1oXPgihjlyAzBq8SW_P_QNnadoNjAdEOQ/edit?usp=sharing
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- OS：Amazon Linux VERSION="2"
+- 言語：HTML,SCSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
