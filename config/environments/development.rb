@@ -76,9 +76,21 @@ Rails.application.configure do
   config.hosts.clear
   config.active_job.queue_adapter = :inline
  #お問い合わせ設定
-   config.action_mailer.raise_delivery_errors = true #メール送信ができなかった場合、エラーを発生させます
-    config.action_mailer.delivery_method = :smtp  #メール送信時は通信プロトコルSMTPを使用します
-   config.action_mailer.smtp_settings = {
+  # config.action_mailer.raise_delivery_errors = true #メール送信ができなかった場合、エラーを発生させます
+  #   config.action_mailer.delivery_method = :smtp  #メール送信時は通信プロトコルSMTPを使用します
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                  587,
+  #   domain:               'gmail.com',
+  #   user_name:            ENV["ACTION_MAILER_USER"],
+  #   password:             ENV["ACTION_MAILER_KEY"],
+  #   authentication:       'login',
+  #   enable_starttls_auto:  true
+  # }
+    #お問い合わせ設定
+  config.action_mailer.raise_delivery_errors = true #メール送信ができなかった場合、エラーを発生させます
+  config.action_mailer.delivery_method = :smtp #メール送信時は通信プロトコルSMTPを使用します
+  config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                  587,
     domain:               'gmail.com',
@@ -86,6 +98,6 @@ Rails.application.configure do
     password:             ENV["ACTION_MAILER_KEY"],
     authentication:       'login',
     enable_starttls_auto:  true
-   }
+  }
   
 end
