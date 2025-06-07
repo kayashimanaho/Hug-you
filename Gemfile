@@ -6,7 +6,7 @@ ruby '3.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -60,7 +60,7 @@ gem "enum_help"
 gem 'dotenv-rails'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
-gem "enum_help"
+gem 'oauth2', '~> 2.0'
 gem 'jquery-rails'
 gem 'dotenv-rails'
 group :production do
@@ -69,3 +69,4 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+gem "pg"
