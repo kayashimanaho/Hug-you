@@ -2,7 +2,6 @@ require_relative "boot"
 
 require "rails/all"
 require "logger"
-require "active_support/logger"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -25,7 +24,7 @@ module HugYou
     # config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]#devise.jaymlが読み込まれなかった
     
     # ロガーの設定を追加
-    config.logger = ActiveSupport::Logger.new(STDOUT)
+    config.logger = Logger.new(STDOUT)
     config.logger.formatter = proc do |severity, datetime, progname, msg|
       "#{datetime}: #{severity} #{msg}\n"
     end
